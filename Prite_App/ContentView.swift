@@ -9,80 +9,87 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @ObservedObject var coreLocation:CoreLocation = CoreLocation()
+    @EnvironmentObject var proxyDatabase: ProxyDatabase
+    @Environment(\.presentationMode) var presentationMode
+    @State private var isPresented = false
+    @State private var sourceType = UIImagePickerController.SourceType.photoLibrary
+    @State private var image:UIImage?
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        VStack{
+            Text("첫 글쓰기를 플레이어리에서 작성하려고합니다 지금 드는 생각을 글로 작성해주세요" + "\n" + "사진도 추가 할수있습니다")
+                .font(.custom("SongMyung-Regular.ttf", size: 18))
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .foregroundColor(.black)
+                .padding()
+            if let image = self.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity, maxHeight: 250)
+            }
+            else {
+                VStack {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(maxWidth: 48, maxHeight: 48)
+                        .foregroundColor(.black)
+                    Button {
+                        self.isPresented.toggle()
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(maxWidth: 48, maxHeight: 48)
+                            .foregroundColor(.black)
+                    }.sheet(isPresented: $isPresented,onDismiss: {
+                    },content: {
+                        ImagePicker(sourceType: self.sourceType, image: $image)
+                    })
+                    Text("사진을 추가해주세요")
+                        .font(.custom("BlackHanSans-Regular.ttf", size: 28))
+                }
+            }
+            HStack(spacing:10){
+                Text("제목")
+                    .padding()
+                Spacer()
+                TextField("제목을 입력해주세요", text: $proxyDatabase.title)
+                    .onSubmit {
+                        
                     }
-                }
-                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+            Divider()
+            TextEditor(text: $proxyDatabase.plot)
+            Spacer()
+            HStack {
+                Spacer()
+                Button {
+                    print(coreLocation.getCoordinate().latitude,coreLocation.getCoordinate().longitude)
+                    print(coreLocation.locationManager?.location?.coordinate.latitude, coreLocation.locationManager?.location?.coordinate.longitude )
+                } label: {
+                    Text("작성완료")
+                        .font(.custom("BlackHanSans-Regular.ttf", size: 24))
+                        .padding()
+                }.foregroundColor(.black)
             }
-            Text("Select an item")
+        }.onAppear {
+            coreLocation.checkLocation()
+            print(coreLocation.getCoordinate().latitude,coreLocation.getCoordinate().longitude)
+            print(coreLocation.locationManager?.location?.coordinate.latitude, coreLocation.locationManager?.location?.coordinate.longitude )
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
 
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    @StateObject var proxyDatabase:ProxyDatabase = ProxyDatabase()
+//
+//    static var previews: some View {
+//        ContentView()
+////        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}

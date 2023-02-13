@@ -12,7 +12,11 @@
 		63B9604E299A81D8009F234A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B9604D299A81D8009F234A /* Assets.xcassets */; };
 		63B96051299A81D8009F234A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B96050299A81D8009F234A /* Preview Assets.xcassets */; };
 		63B96053299A81D8009F234A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96052299A81D8009F234A /* Persistence.swift */; };
-		63B96056299A81D8009F234A /* Prite_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63B96054299A81D8009F234A /* Prite_App.xcdatamodeld */; };
+		63B96056299A81D8009F234A /* PriteDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63B96054299A81D8009F234A /* PriteDatabase.xcdatamodeld */; };
+		63B9605E299A8600009F234A /* WriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9605D299A8600009F234A /* WriteModel.swift */; };
+		63B96060299A89E0009F234A /* ProxyDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9605F299A89E0009F234A /* ProxyDatabase.swift */; };
+		63B96062299A8D48009F234A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96061299A8D48009F234A /* ImagePicker.swift */; };
+		63B96064299A8FE8009F234A /* CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96063299A8FE8009F234A /* CoreLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +26,11 @@
 		63B9604D299A81D8009F234A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B96050299A81D8009F234A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		63B96052299A81D8009F234A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		63B96055299A81D8009F234A /* Prite_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Prite_App.xcdatamodel; sourceTree = "<group>"; };
+		63B96055299A81D8009F234A /* PriteDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PriteDatabase.xcdatamodel; sourceTree = "<group>"; };
+		63B9605D299A8600009F234A /* WriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModel.swift; sourceTree = "<group>"; };
+		63B9605F299A89E0009F234A /* ProxyDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyDatabase.swift; sourceTree = "<group>"; };
+		63B96061299A8D48009F234A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		63B96063299A8FE8009F234A /* CoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +63,13 @@
 		63B96048299A81D7009F234A /* Prite_App */ = {
 			isa = PBXGroup;
 			children = (
+				63B9605C299A85B7009F234A /* Model */,
 				63B96049299A81D7009F234A /* Prite_AppApp.swift */,
 				63B9604B299A81D7009F234A /* ContentView.swift */,
+				63B9605F299A89E0009F234A /* ProxyDatabase.swift */,
 				63B9604D299A81D8009F234A /* Assets.xcassets */,
 				63B96052299A81D8009F234A /* Persistence.swift */,
-				63B96054299A81D8009F234A /* Prite_App.xcdatamodeld */,
+				63B96054299A81D8009F234A /* PriteDatabase.xcdatamodeld */,
 				63B9604F299A81D8009F234A /* Preview Content */,
 			);
 			path = Prite_App;
@@ -71,6 +81,16 @@
 				63B96050299A81D8009F234A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		63B9605C299A85B7009F234A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63B9605D299A8600009F234A /* WriteModel.swift */,
+				63B96061299A8D48009F234A /* ImagePicker.swift */,
+				63B96063299A8FE8009F234A /* CoreLocation.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +164,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B96053299A81D8009F234A /* Persistence.swift in Sources */,
+				63B96060299A89E0009F234A /* ProxyDatabase.swift in Sources */,
 				63B9604C299A81D7009F234A /* ContentView.swift in Sources */,
-				63B96056299A81D8009F234A /* Prite_App.xcdatamodeld in Sources */,
+				63B96062299A8D48009F234A /* ImagePicker.swift in Sources */,
+				63B96056299A81D8009F234A /* PriteDatabase.xcdatamodeld in Sources */,
+				63B9605E299A8600009F234A /* WriteModel.swift in Sources */,
 				63B9604A299A81D7009F234A /* Prite_AppApp.swift in Sources */,
+				63B96064299A8FE8009F234A /* CoreLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +302,10 @@
 				DEVELOPMENT_TEAM = S5VGQ6HPYR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -307,6 +335,10 @@
 				DEVELOPMENT_TEAM = S5VGQ6HPYR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -349,13 +381,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		63B96054299A81D8009F234A /* Prite_App.xcdatamodeld */ = {
+		63B96054299A81D8009F234A /* PriteDatabase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				63B96055299A81D8009F234A /* Prite_App.xcdatamodel */,
+				63B96055299A81D8009F234A /* PriteDatabase.xcdatamodel */,
 			);
-			currentVersion = 63B96055299A81D8009F234A /* Prite_App.xcdatamodel */;
-			path = Prite_App.xcdatamodeld;
+			currentVersion = 63B96055299A81D8009F234A /* PriteDatabase.xcdatamodel */;
+			path = PriteDatabase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

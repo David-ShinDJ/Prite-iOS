@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 @main
 struct Prite_AppApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject var proxyDatabase:ProxyDatabase = ProxyDatabase()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(proxyDatabase)
         }
     }
 }
+
+
