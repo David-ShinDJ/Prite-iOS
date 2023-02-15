@@ -10,12 +10,9 @@ import CoreLocation
 
 @main
 struct Prite_AppApp: App {
-    @StateObject var proxyDatabase:ProxyDatabase = ProxyDatabase()
-
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(proxyDatabase)
         }
     }
 }

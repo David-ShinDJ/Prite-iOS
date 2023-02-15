@@ -20,7 +20,6 @@ class ProxyDatabase: ObservableObject {
     func write(image:UIImage) {
         self.model.title = self.title
         self.model.plot = self.plot
-        
     }
     
     private func createWrite() {
