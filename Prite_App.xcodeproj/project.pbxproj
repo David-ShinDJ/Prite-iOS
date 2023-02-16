@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635DE889299E0F640021FB63 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DE888299E0F640021FB63 /* DetailView.swift */; };
 		63B9604A299A81D7009F234A /* Prite_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96049299A81D7009F234A /* Prite_AppApp.swift */; };
 		63B9604C299A81D7009F234A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9604B299A81D7009F234A /* ContentView.swift */; };
 		63B9604E299A81D8009F234A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B9604D299A81D8009F234A /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		635DE888299E0F640021FB63 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		63B96046299A81D7009F234A /* Prite_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prite_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B96049299A81D7009F234A /* Prite_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prite_AppApp.swift; sourceTree = "<group>"; };
 		63B9604B299A81D7009F234A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				63BC5CCE299CFE380002BC1D /* MainView.swift */,
 				63BC5CD4299D09170002BC1D /* ListView.swift */,
 				63BC5CD6299D0F610002BC1D /* SettingView.swift */,
+				635DE888299E0F640021FB63 /* DetailView.swift */,
 				63BC5CD2299D04AA0002BC1D /* WriteView.swift */,
 				63BC5CD0299CFE6E0002BC1D /* MapView.swift */,
 			);
@@ -193,6 +196,7 @@
 				63BC5CD3299D04AA0002BC1D /* WriteView.swift in Sources */,
 				63B96062299A8D48009F234A /* ImagePicker.swift in Sources */,
 				63B96056299A81D8009F234A /* PriteDatabase.xcdatamodeld in Sources */,
+				635DE889299E0F640021FB63 /* DetailView.swift in Sources */,
 				63BC5CD7299D0F610002BC1D /* SettingView.swift in Sources */,
 				63BC5CD5299D09170002BC1D /* ListView.swift in Sources */,
 				63B9605E299A8600009F234A /* WriteModel.swift in Sources */,

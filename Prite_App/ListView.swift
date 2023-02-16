@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct ListView: View {
-    
     var dateString:String {
         let nowDate = Date()
         let dateFormatter = DateFormatter()
@@ -17,36 +16,42 @@ struct ListView: View {
         return dateFormatter.string(from: nowDate)
     }
     
-    let basic_rows = [GridItem(.fixed(120),spacing: 0), GridItem(.fixed(120),spacing: 0)]
+    let basic_rows = [GridItem(.fixed(125),spacing: 0), GridItem(.fixed(125),spacing: 0)]
     
     var body: some View {
-        VStack(spacing:0) {
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: basic_rows,spacing: 10) {
-                    ForEach(0...1, id: \.self) { value in
-                        Rectangle()
-                            .foregroundColor(.red)
-                            .frame(width:60, height:120)
-                        Rectangle()
-                            .foregroundColor(.blue)
-                            .frame(width:60, height:120)
+        NavigationView {
+            VStack(spacing:0) {
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: basic_rows, spacing:10) {
+                        ForEach(0...mapdata.count - 1, id: \.self) { index in
+                            NavigationLink {
+                                DetailView(mapModel: mapdata[index])
+                            } label: {
+                                Text(mapdata[index].title)
+                                    .frame(width:60, height:44)
+                                
+                            }
+                            Image(uiImage: mapdata[index].image)
+                                .resizable()
+                                .frame(width:48, height:200)
+                        }
+                    }
+                }
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: basic_rows,spacing: 10) {
+                        ForEach(0...1, id: \.self) { value in
+                            Rectangle()
+                                .foregroundColor(.red)
+                                .frame(width:60, height:44)
+                            Rectangle()
+                                .foregroundColor(.blue)
+                                .frame(width:60, height:200)
+                        }
                     }
                 }
             }
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: basic_rows, spacing:10) {
-                    ForEach(0...10, id: \.self) { value in
-                        Rectangle()
-                            .foregroundColor(.red)
-                            .frame(width:60, height:120)
-                        Rectangle()
-                            .foregroundColor(.blue)
-                            .frame(width:60, height:120)
-                    }
-                }
-                
-            }
-            Text("Hello")
+            .navigationBarHidden(true)
+            .navigationTitle("리스트")
         }
     }
 }
