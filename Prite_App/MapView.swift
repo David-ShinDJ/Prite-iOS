@@ -38,10 +38,11 @@ class MapModel: Identifiable {
         self.latitude = latitude
         self.longitude = longitude
     }
-    
 }
 
 struct MapView: View {
+    
+    @EnvironmentObject var settingEnvironment:SettingEnvironment
     
     @State var region:MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.42898, longitude: 127.09638), span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
     var body: some View {
@@ -58,6 +59,12 @@ struct MapView: View {
                         }
                     }
                 }
+                Button {
+                    print(settingEnvironment.mapValue)
+                } label: {
+                    Text("MapMagnitude Check")
+                }
+
             }
             .navigationBarHidden(true)
             .navigationTitle("맵화면")
