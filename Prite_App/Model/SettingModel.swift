@@ -8,21 +8,21 @@
 import Foundation
 import SwiftUI
 
-class SettingEnvironment: ObservableObject {
-    
-    enum FontStyle: String, CaseIterable, Identifiable {
-        case basic, elite, cute
-        var id: Self { self }
-    }
-
-    enum ThemeStyle: String, CaseIterable, Identifiable {
-        case basic, elite, cute
-        var id: Self { self }
-    }
-    
-    
-    @Published var fontValue:FontStyle = .basic
-    @Published var themeValue:ThemeStyle = .basic
-    @Published var mapValue:Double = 0.5
-    
-}
+//class SettingEnvironment: ObservableObject {
+//
+//    enum FontStyle: String, CaseIterable, Identifiable {
+//        case basic, elite, cute
+//        var id: Self { self }
+//    }
+//
+//    enum ThemeStyle: String, CaseIterable, Identifiable {
+//        case basic, elite, cute
+//        var id: Self { self }
+//    }
+//
+//
+//    @Published var fontValue:FontStyle = .basic
+//    @Published var themeValue:ThemeStyle = .basic
+//    @Published var mapValue:Double = 0.5
+//
+//}

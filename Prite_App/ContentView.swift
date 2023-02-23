@@ -12,11 +12,9 @@ struct ContentView: View {
     @State var onboardingSheet:Bool = false
     @AppStorage("Onboarding") private var onboarding:Bool = true
     
-    @StateObject var settingEnvironment:SettingEnvironment = SettingEnvironment()
     
     var body: some View {
         MainView()
-            .environmentObject(settingEnvironment)
             .sheet(isPresented: $onboardingSheet) {
                 OnboardingView(onboardingSheet: $onboardingSheet)
             }
@@ -34,3 +32,4 @@ struct ContentView_Previews: PreviewProvider {
 
     }
 }
+

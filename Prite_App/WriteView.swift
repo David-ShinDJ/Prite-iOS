@@ -9,17 +9,20 @@ import Foundation
 import SwiftUI
 
 struct WriteView: View {
-    @Environment(\.presentationMode) var presentationMode
     
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.themeEnvironmentValue) var theme: SettingTheme
     @State private var title:String = ""
     @State private var plot:String = "본문을 입력해주세요"
     @State private var isPresented = false
     @State private var sourceType = UIImagePickerController.SourceType.photoLibrary
     @State private var image:UIImage?
     
+    
     var body: some View {
             VStack {
                 Text("지금 내가 위치한곳을 생각하면서 글쓰기를 작성해봅시다")
+                    .foregroundColor(theme.fontColor)
                 if let image = self.image {
                     Image(uiImage: image)
                         .resizable()

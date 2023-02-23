@@ -48,6 +48,14 @@
 		63BC5CD6299D0F610002BC1D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		63BC5CD8299D11660002BC1D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		63BC5CDA299D119E0002BC1D /* OnboardingFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirst.swift; sourceTree = "<group>"; };
+		63F0EC7829A5ABFD00AAFEF6 /* CuteFont-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CuteFont-Regular.ttf"; sourceTree = "<group>"; };
+		63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dongle-Regular.ttf"; sourceTree = "<group>"; };
+		63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumBrushScript-Regular.ttf"; sourceTree = "<group>"; };
+		63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumPenScript-Regular.ttf"; sourceTree = "<group>"; };
+		63F0EC7C29A5ABFD00AAFEF6 /* Gaegu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Regular.ttf"; sourceTree = "<group>"; };
+		63F0EC7D29A5AC0800AAFEF6 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
+		63F0EC7E29A5AC0F00AAFEF6 /* SongMyung-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SongMyung-Regular.ttf"; sourceTree = "<group>"; };
+		63F0EC7F29A5AC2B00AAFEF6 /* Prite-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Prite-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		63F51F2D29A50559002245E6 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +89,8 @@
 		63B96048299A81D7009F234A /* Prite_App */ = {
 			isa = PBXGroup;
 			children = (
+				63F0EC7F29A5AC2B00AAFEF6 /* Prite-App-Info.plist */,
+				63F0EC7629A5ABD300AAFEF6 /* Styles */,
 				63B9605C299A85B7009F234A /* Model */,
 				63B96049299A81D7009F234A /* Prite_AppApp.swift */,
 				63B9604B299A81D7009F234A /* ContentView.swift */,
@@ -118,6 +128,28 @@
 				63F51F2D29A50559002245E6 /* SettingModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		63F0EC7629A5ABD300AAFEF6 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				63F0EC7729A5ABE000AAFEF6 /* Font */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		63F0EC7729A5ABE000AAFEF6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				63F0EC7829A5ABFD00AAFEF6 /* CuteFont-Regular.ttf */,
+				63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */,
+				63F0EC7C29A5ABFD00AAFEF6 /* Gaegu-Regular.ttf */,
+				63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */,
+				63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */,
+				63F0EC7D29A5AC0800AAFEF6 /* BlackHanSans-Regular.ttf */,
+				63F0EC7E29A5AC0F00AAFEF6 /* SongMyung-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +370,7 @@
 				DEVELOPMENT_TEAM = S5VGQ6HPYR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Prite-App-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
@@ -371,6 +404,7 @@
 				DEVELOPMENT_TEAM = S5VGQ6HPYR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Prite-App-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "플라이트가 사용자의 위치를 확인하려고 합니다";

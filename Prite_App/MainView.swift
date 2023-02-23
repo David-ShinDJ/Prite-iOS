@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 struct MainView: View {
     
+    @StateObject var themeEnvironment:ThemeEnvironment = ThemeEnvironment()
+    
     var body: some View {
         TabView {
             MapView()
@@ -16,14 +18,18 @@ struct MainView: View {
                     Label("Map", systemImage: "location.fill")
             }
             WriteView()
+                .environment(\.themeEnvironmentValue, themeEnvironment.theme)
                 .tabItem {
                     Label("Write", systemImage: "highlighter")
+                    
             }
             ListView()
                 .tabItem {
                     Label("Writing", systemImage: "list.clipboard")
                 }
             SettingView()
+                .environmentObject(themeEnvironment)
+                .environment(\.themeEnvironmentValue, themeEnvironment.theme)
                 .tabItem {
                     Label("Setting", systemImage: "gearshape.fill")
                 }

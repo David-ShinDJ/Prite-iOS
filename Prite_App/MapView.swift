@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import MapKit
 
-
 let mapdata = [
     MapModel(title:"모란시장", plot:"모란시장에서...", image:UIImage(named: "model0")!,latitude: 37.42917,longitude: 127.12710),
     MapModel(title:"탄천입구", plot:"탄천입구에서...", image:UIImage(named: "model1")!,latitude: 37.42768, longitude: 127.11720),
@@ -41,9 +40,6 @@ class MapModel: Identifiable {
 }
 
 struct MapView: View {
-    
-    @EnvironmentObject var settingEnvironment:SettingEnvironment
-    
     @State var region:MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.42898, longitude: 127.09638), span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
     var body: some View {
         NavigationView {
@@ -60,7 +56,7 @@ struct MapView: View {
                     }
                 }
                 Button {
-                    print(settingEnvironment.mapValue)
+                    
                 } label: {
                     Text("MapMagnitude Check")
                 }
