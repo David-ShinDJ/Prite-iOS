@@ -20,8 +20,11 @@ enum ThemeStyle: String, CaseIterable, Identifiable {
 
 struct SettingView:View {
     
-    @EnvironmentObject var themeEnvironment: ThemeEnvironment
-    @Environment(\.themeEnvironmentValue) var theme: SettingTheme
+    @EnvironmentObject var settingEnvironment: SettingEnvironment
+    @Environment(\.environmentTheme) var theme: SettingTheme
+    @Environment(\.environmentFont) var font: SettingFont
+    
+    
     @State private var fontValue: FontStyle = .basic
     @State private var themeValue: ThemeStyle = .basic
     @State private var mapMagnitude: Double = 0.5
@@ -36,7 +39,16 @@ struct SettingView:View {
                         Text("귀여운").tag(FontStyle.cute)
                         }
                 }.onChange(of: fontValue) { newValue in
-                    print("Font: \(newValue)")
+                    if fontValue == .basic {
+                        settingEnvironment.font = BasicFont()
+                        print("basic")
+                    } else if fontValue == .elite {
+                        settingEnvironment.font = EliteFont()
+                        print("elite")
+                    } else {
+                        settingEnvironment.font = CuteFont()
+                        print("cute")
+                    }
                 }
                 Section (header:Text("테마변경")){
                     Picker("테마", selection: $themeValue) {
@@ -46,13 +58,13 @@ struct SettingView:View {
                     }.onChange(of: themeValue) { newValue in
                         print("Change")
                         if themeValue == .basic {
-                            themeEnvironment.theme = BasicTheme()
+                            settingEnvironment.theme = BasicTheme()
                             print("basic")
                         } else if themeValue == .elite {
-                            themeEnvironment.theme = EliteTheme()
+                            settingEnvironment.theme = EliteTheme()
                             print("elite")
                         } else {
-                            themeEnvironment.theme = CuteTheme()
+                            settingEnvironment.theme = CuteTheme()
                             print("cute")
                         }
                     }
@@ -64,11 +76,11 @@ struct SettingView:View {
                         }
                 }
             }
-            SampleView()
-                .foregroundColor(theme.buttonColor)
             Text("앱제작자 및 버전소개")
                 .padding()
                 .foregroundColor(theme.fontColor)
+                .font(.custom(font.titleFont, size: font.titleSize))
+            
         }
     }
 }
@@ -78,94 +90,3 @@ struct SettingView_Previews: PreviewProvider {
         SettingView()
     }
 }
-
-final class ThemeEnvironment: ObservableObject {
-    @Published var theme:SettingTheme
-    
-    init(theme: SettingTheme = BasicTheme()) {
-        self.theme = theme
-    }
-}
-struct SampleView: View {
-    var body: some View {
-        VStack {
-            Text("Hello...")
-            Button {
-                
-            } label: {
-                Text("Hello")
-            }
-            Image(systemName: "house.fill")
-        }
-    }
-}
-
-private struct MySettingThemeKey: EnvironmentKey {
-    static let defaultValue: SettingTheme = BasicTheme()
-}
-
-extension EnvironmentValues {
-    var themeEnvironmentValue: SettingTheme {
-        get { self[MySettingThemeKey.self]}
-        set { self[MySettingThemeKey.self] = newValue}
-    }
-}
-
-extension View {
-    func myCustomThemeValue(_ myCustomThemeValue: SettingTheme) -> some View {
-        environment(\.themeEnvironmentValue, myCustomThemeValue)
-    }
-}
-
-protocol SettingTheme {
-    var buttonColor: Color { get }
-    var fontColor: Color { get }
-    var iconColor: Color { get }
-}
-
-protocol SettingFont {
-    var font: String { get }
-    var fontSize: Int { get }
-}
-
-struct BasicTheme: SettingTheme {
-    var buttonColor: Color {
-        Color("buttonBasic")
-    }
-    
-    var iconColor: Color {
-        Color("iconBasic")
-    }
-    
-    var fontColor: Color {
-        Color("fontBasic")
-    }
-}
-struct EliteTheme: SettingTheme {
-    var buttonColor: Color {
-        Color("buttonElite")
-    }
-    
-    var iconColor: Color {
-        Color("iconElite")
-    }
-    
-    var fontColor: Color {
-        Color("fontElite")
-    }
-}
-
-struct CuteTheme: SettingTheme {
-    var buttonColor: Color {
-        Color("buttonCute")
-    }
-    
-    var iconColor: Color {
-        Color("iconCute")
-    }
-    
-    var fontColor: Color {
-        Color("fontCute")
-    }
-}
-

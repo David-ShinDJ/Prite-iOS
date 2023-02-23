@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 struct ListView: View {
+    @Environment(\.environmentTheme) var theme: SettingTheme
+    @Environment(\.environmentFont) var font: SettingFont
+    
     var dateString:String {
         let nowDate = Date()
         let dateFormatter = DateFormatter()

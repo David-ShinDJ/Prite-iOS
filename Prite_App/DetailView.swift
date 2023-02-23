@@ -11,6 +11,9 @@ import SwiftUI
 
 struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.environmentTheme) var theme: SettingTheme
+    @Environment(\.environmentFont) var font: SettingFont
+    
     
     let mapModel: MapModel
     

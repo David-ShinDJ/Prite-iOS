@@ -40,6 +40,9 @@ class MapModel: Identifiable {
 }
 
 struct MapView: View {
+    @Environment(\.environmentTheme) var theme: SettingTheme
+    @Environment(\.environmentFont) var font: SettingFont
+    
     @State var region:MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.42898, longitude: 127.09638), span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
     var body: some View {
         NavigationView {
@@ -59,6 +62,7 @@ struct MapView: View {
                     
                 } label: {
                     Text("MapMagnitude Check")
+                        .font(.custom(font.titleFont, size: font.titleSize))
                 }
 
             }
