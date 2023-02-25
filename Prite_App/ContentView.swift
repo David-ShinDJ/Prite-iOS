@@ -9,9 +9,9 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    
     @State var onboardingSheet:Bool = false
     @AppStorage("Onboarding") private var onboarding:Bool = true
-    
     
     var body: some View {
         MainView()
@@ -26,7 +26,6 @@ struct ContentView: View {
 
 
 struct ContentView_Previews: PreviewProvider {
-
     static var previews: some View {
         ContentView()
 

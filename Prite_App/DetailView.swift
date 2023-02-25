@@ -34,7 +34,7 @@ struct DetailView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
-                Image(uiImage: mapModel.image)
+                Image(uiImage: mapModel.image!)
                     .resizable()
                     .scaledToFill()
                     .frame(maxWidth: 400, maxHeight: 240)
@@ -48,8 +48,8 @@ struct DetailView: View {
                 Spacer()
             }
             .onAppear {
-                self.title = mapModel.title
-                self.plot = mapModel.plot
+                self.title = mapModel.title!
+                self.plot = mapModel.plot!
             }
         }
         .toolbar {

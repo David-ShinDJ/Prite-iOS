@@ -13,6 +13,7 @@ struct WriteView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
+    @ObservedObject var proxyDatabase: ProxyDatabase
     
     @State private var title:String = ""
     @State private var plot:String = "본문을 입력해주세요"
@@ -55,12 +56,12 @@ struct WriteView: View {
                     Text("제목")
                         .padding()
                     Spacer()
-                    TextField("제목을 입력해주세요", text: $title)
+                    TextField("제목을 입력해주세요", text: $proxyDatabase.title)
                         .onSubmit {
                         }
                 }
                 Divider()
-                TextEditor(text: $plot)
+                TextEditor(text: $proxyDatabase.plot)
                     .font(.custom(font.plotFont, size: font.plotSize))
                     .onTapGesture {
                         self.plot = ""
@@ -82,7 +83,8 @@ struct WriteView: View {
 }
 
 struct WriteView_Previews: PreviewProvider {
+    static var proxyDatabase:ProxyDatabase = ProxyDatabase()
     static var previews: some View {
-        WriteView()
+        WriteView(proxyDatabase: proxyDatabase)
     }
 }

@@ -12,6 +12,7 @@ struct ListView: View {
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     
+    @ObservedObject var proxyDatabase: ProxyDatabase
     var dateString:String {
         let nowDate = Date()
         let dateFormatter = DateFormatter()
@@ -26,15 +27,15 @@ struct ListView: View {
             VStack(spacing:0) {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: basic_rows, spacing:10) {
-                        ForEach(0...mapdata.count - 1, id: \.self) { index in
+                        ForEach(0...proxyDatabase.models.count - 1, id: \.self) { index in
                             NavigationLink {
-                                DetailView(mapModel: mapdata[index])
+                                DetailView(mapModel: proxyDatabase.models[index])
                             } label: {
-                                Text(mapdata[index].title)
+                                Text(proxyDatabase.models[index].title!)
                                     .frame(width:60, height:44)
                                 
                             }
-                            Image(uiImage: mapdata[index].image)
+                            Image(uiImage: proxyDatabase.models[index].image!)
                                 .resizable()
                                 .frame(width:48, height:200)
                         }
@@ -60,11 +61,8 @@ struct ListView: View {
 }
 
 struct ListView_Previews: PreviewProvider {
+    static var proxyDatabase:ProxyDatabase = ProxyDatabase()
     static var previews: some View {
-        ListView()
+        ListView( proxyDatabase: proxyDatabase)
     }
-}
-struct Ocean: Identifiable {
-    let name: String
-    let id = UUID()
 }
