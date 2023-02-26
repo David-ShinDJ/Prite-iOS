@@ -22,29 +22,10 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.region = newRegion
     }
     
-    func getCoordinate() -> CLLocationCoordinate2D {
-        self.region.center
-    }
-    
     var locationManager: CLLocationManager?
-    
-    
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .notDetermined:
-            break
-        case .restricted:
-            print("사용자는 현재 접근금지 위치지역에 위치해있습니다.")
-        case .denied:
-            print("사용자의 위치정보 사용을 거부당했습니다")
-        case .authorizedAlways, .authorizedWhenInUse:
-            DispatchQueue.main.async {
-                self.region = MKCoordinateRegion(center: manager.location?.coordinate ?? defaultLocation, span: mapMagnitude)
-            }
-        @unknown default:
-            break
-        }
+        checkLocationAuthorization()
     }
     
     private func checkLocationAuthorization() {
@@ -59,9 +40,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         case .denied:
             print("사용자의 위치정보 사용을 거부당했습니다")
         case .authorizedAlways, .authorizedWhenInUse:
-            DispatchQueue.main.async {
-                self.region = MKCoordinateRegion(center: locationManager.location?.coordinate ?? defaultLocation, span: mapMagnitude)
-            }
+            self.region = MKCoordinateRegion(center: locationManager.location?.coordinate ?? defaultLocation, span: mapMagnitude)
         default:
             break
         }
@@ -76,7 +55,5 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             print("외부환경 또는 기기의 문제가 발생하여 위치정보를 확인할수 없습니다")
         }
     }
-    
-    
     
 }

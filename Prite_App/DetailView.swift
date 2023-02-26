@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-
+// TODO: UI완성하기
 struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.environmentTheme) var theme: SettingTheme
@@ -46,6 +46,7 @@ struct DetailView: View {
                     .disabled(!updating)
                     .padding()
                 Spacer()
+                QuoteView(length: "long")
             }
             .onAppear {
                 self.title = mapModel.title!

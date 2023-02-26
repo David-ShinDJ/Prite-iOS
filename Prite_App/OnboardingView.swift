@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+// TODO: 온보딩뷰 끝내기
 struct OnboardingView: View {
     @Binding var onboardingSheet:Bool
     var body: some View {

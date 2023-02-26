@@ -56,8 +56,6 @@ protocol SettingTheme {
 protocol SettingFont {
     var titleFont: String { get }
     var plotFont: String { get }
-    var titleSize: CGFloat { get }
-    var plotSize: CGFloat { get }
 }
 
 struct BasicTheme: SettingTheme {
@@ -109,13 +107,6 @@ struct BasicFont: SettingFont {
         "SongMyung-Regular"
     }
     
-    var titleSize: CGFloat {
-        24.0
-    }
-    
-    var plotSize: CGFloat {
-        18.0
-    }
 }
 
 struct EliteFont: SettingFont {
@@ -125,14 +116,7 @@ struct EliteFont: SettingFont {
     var plotFont: String {
         "NanumPenScript-Regular"
     }
-    
-    var titleSize: CGFloat {
-        26.0
-    }
-    
-    var plotSize: CGFloat {
-        14.0
-    }
+
 }
 struct CuteFont: SettingFont {
     var titleFont: String {
@@ -142,11 +126,4 @@ struct CuteFont: SettingFont {
         "CuteFont-Regular"
     }
     
-    var titleSize: CGFloat {
-        22.0
-    }
-    
-    var plotSize: CGFloat {
-        16.0
-    }
 }

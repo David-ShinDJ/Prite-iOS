@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		635DE889299E0F640021FB63 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DE888299E0F640021FB63 /* DetailView.swift */; };
+		638FDBCA29AB7A71001F880C /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBC929AB7A71001F880C /* QuoteView.swift */; };
+		638FDBCD29AB7BA1001F880C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBCC29AB7BA1001F880C /* Constants.swift */; };
 		63B9604A299A81D7009F234A /* Prite_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96049299A81D7009F234A /* Prite_AppApp.swift */; };
 		63B9604C299A81D7009F234A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9604B299A81D7009F234A /* ContentView.swift */; };
 		63B9604E299A81D8009F234A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B9604D299A81D8009F234A /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		635DE888299E0F640021FB63 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		638FDBC929AB7A71001F880C /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
+		638FDBCC29AB7BA1001F880C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63B96046299A81D7009F234A /* Prite_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prite_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B96049299A81D7009F234A /* Prite_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prite_AppApp.swift; sourceTree = "<group>"; };
 		63B9604B299A81D7009F234A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		638FDBCB29AB7B73001F880C /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				638FDBCC29AB7BA1001F880C /* Constants.swift */,
+			);
+			path = Static;
+			sourceTree = "<group>";
+		};
 		63B9603D299A81D7009F234A = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +108,7 @@
 		63B96048299A81D7009F234A /* Prite_App */ = {
 			isa = PBXGroup;
 			children = (
+				638FDBCB29AB7B73001F880C /* Static */,
 				63F1E23E29A749FE00B2BB0E /* Environment */,
 				63F0EC7F29A5AC2B00AAFEF6 /* Prite-App-Info.plist */,
 				63F0EC7629A5ABD300AAFEF6 /* Styles */,
@@ -114,6 +127,7 @@
 				635DE888299E0F640021FB63 /* DetailView.swift */,
 				63BC5CD2299D04AA0002BC1D /* WriteView.swift */,
 				63BC5CD0299CFE6E0002BC1D /* MapView.swift */,
+				638FDBC929AB7A71001F880C /* QuoteView.swift */,
 				63B9604F299A81D8009F234A /* Preview Content */,
 			);
 			path = Prite_App;
@@ -245,12 +259,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B96053299A81D8009F234A /* Persistence.swift in Sources */,
+				638FDBCD29AB7BA1001F880C /* Constants.swift in Sources */,
 				63BC5CCF299CFE380002BC1D /* MainView.swift in Sources */,
 				63B96060299A89E0009F234A /* ProxyDatabase.swift in Sources */,
 				63BC5CD1299CFE6E0002BC1D /* MapView.swift in Sources */,
 				63B9604C299A81D7009F234A /* ContentView.swift in Sources */,
 				63BC5CDB299D119E0002BC1D /* OnboardingFirst.swift in Sources */,
 				63BC5CD3299D04AA0002BC1D /* WriteView.swift in Sources */,
+				638FDBCA29AB7A71001F880C /* QuoteView.swift in Sources */,
 				63B96062299A8D48009F234A /* ImagePicker.swift in Sources */,
 				63B96056299A81D8009F234A /* PriteDatabase.xcdatamodeld in Sources */,
 				635DE889299E0F640021FB63 /* DetailView.swift in Sources */,

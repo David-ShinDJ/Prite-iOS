@@ -10,10 +10,8 @@ import UIKit
 import MapKit
 import SwiftUI
 
-// TODO: CoreLocation Proxy 두가지 분리시키기 
+// TODO: CoreData 연결하기
 class ProxyDatabase: ObservableObject {
-    
-    @ObservedObject var coreLocation:LocationManager = LocationManager()
     
     @Published var models: [MapModel] = [
         MapModel(title:"모란시장", plot:"모란시장에서...", image:UIImage(named: "model0")!,latitude: 37.42917,longitude: 127.12710),
@@ -24,20 +22,6 @@ class ProxyDatabase: ObservableObject {
         MapModel(title:"코이카", plot:"코이카에서...", image:UIImage(named: "model5")!,latitude: 37.41629, longitude: 127.09754),
         MapModel(title:"차병원", plot:"차병원에서...", image:UIImage(named: "model6")!,latitude: 37.41027, longitude: 127.09754),
         MapModel(title:"성남시청", plot:"성남시청에서...", image:UIImage(named: "model7")!,latitude: 37.42002, longitude: 127.12665)]
-    @Published var title:String = ""
-    @Published var plot:String = ""
-    @Published var image:UIImage = UIImage()
-    @Published var latitude: Double = 37.5511
-    @Published var longitude: Double = 126.9882
-    
-    init() {
-        coreLocation.checkLocation()
-    }
-    
-    func setMyLocation() {
-        self.latitude = coreLocation.region.center.latitude
-        self.longitude = coreLocation.region.center.longitude
-    }
 }
 class MapModel: Identifiable {
     let title:String?

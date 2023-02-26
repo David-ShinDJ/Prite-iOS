@@ -8,16 +8,26 @@ import Foundation
 import SwiftUI
 import MapKit
 
-
+// TODO: View 구성 다시 짜기, 위치 재확인 버튼추가
 struct MapView: View {
+    
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     @ObservedObject var proxyDatabase: ProxyDatabase
-    @State var region:MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.42898, longitude: 127.09638), span: MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04))
+    @ObservedObject var locationManager: LocationManager = LocationManager()
+    @State var coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    init(proxyDatabase: ProxyDatabase, locationManager: LocationManager = LocationManager()) {
+        self.proxyDatabase = proxyDatabase
+        self.locationManager = locationManager
+        locationManager.checkLocation()
+    }
+    
+    //MARK : Published Data 업데이트되서 Publishing changes from within view updates is not allowed, this will cause undefined behavior. 발생함
+    
     var body: some View {
         NavigationView {
             VStack {
-                Map(coordinateRegion: $region, showsUserLocation: true, annotationItems:proxyDatabase.models) {
+                Map(coordinateRegion: $locationManager.region, showsUserLocation: true, annotationItems:proxyDatabase.models) {
                     data in MapAnnotation(coordinate: data.coordinate) {
                         NavigationLink {
                             DetailView(mapModel: data)
@@ -28,28 +38,26 @@ struct MapView: View {
                         }
                     }
                 }
+                QuoteView(length: "short")
+                    .font(.custom(font.titleFont, size: 18))
                 Button {
-                    print(proxyDatabase.latitude, proxyDatabase.longitude)
-                    proxyDatabase.setMyLocation()
+                    
                 } label: {
                     Text("MapMagnitude Check")
-                        .font(.custom(font.titleFont, size: font.titleSize))
+                        .font(.custom(font.titleFont, size: 18))
                 }
+                
 
             }
             .navigationBarHidden(true)
             .navigationTitle("맵화면")
-            .onAppear {
-                self.region = proxyDatabase.coreLocation.region
-            }
         }
     }
 }
 
 struct MapView_Previews: PreviewProvider {
-    static var proxyDatabase:ProxyDatabase = ProxyDatabase()
     static var previews: some View {
-        MapView(proxyDatabase: proxyDatabase)
+        MapView(proxyDatabase: ProxyDatabase(),locationManager: LocationManager())
 
     }
 }

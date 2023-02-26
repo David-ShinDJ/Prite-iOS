@@ -79,7 +79,7 @@ struct SettingView:View {
             Text("앱제작자 및 버전소개")
                 .padding()
                 .foregroundColor(theme.fontColor)
-                .font(.custom(font.titleFont, size: font.titleSize))
+                .font(.custom(font.titleFont, size: 18))
             
         }
     }

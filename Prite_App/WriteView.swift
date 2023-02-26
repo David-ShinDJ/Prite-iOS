@@ -7,26 +7,28 @@
 
 import Foundation
 import SwiftUI
-
+// TODO: 이미지 않넣는경우 어떻게 작성될지 생각
 struct WriteView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     @ObservedObject var proxyDatabase: ProxyDatabase
-    
+    @ObservedObject var locationManager: LocationManager = LocationManager()
     @State private var title:String = ""
     @State private var plot:String = "본문을 입력해주세요"
     @State private var isPresented = false
     @State private var sourceType = UIImagePickerController.SourceType.photoLibrary
     @State private var image:UIImage?
     
+    init(proxyDatabase: ProxyDatabase, locationManager: LocationManager = LocationManager()) {
+        self.proxyDatabase = proxyDatabase
+        self.locationManager = locationManager
+        locationManager.checkLocation()
+    }
     
     var body: some View {
             VStack {
-                Text("지금 내가 위치한곳을 생각하면서 글쓰기를 작성해봅시다")
-                    .foregroundColor(theme.fontColor)
-                    .font(.custom(font.titleFont, size: font.titleSize))
                 if let image = self.image {
                     Image(uiImage: image)
                         .resizable()
@@ -56,17 +58,22 @@ struct WriteView: View {
                     Text("제목")
                         .padding()
                     Spacer()
-                    TextField("제목을 입력해주세요", text: $proxyDatabase.title)
+                    TextField("제목을 입력해주세요", text: $title)
                         .onSubmit {
                         }
                 }
                 Divider()
-                TextEditor(text: $proxyDatabase.plot)
-                    .font(.custom(font.plotFont, size: font.plotSize))
+                TextEditor(text: $plot)
+                    .font(.custom(font.plotFont, size:18))
+                Button {
+                    print(locationManager.region)
+                } label: {
+                    Text("좌표확인")
+                }
                     .onTapGesture {
-                        self.plot = ""
+                       plot = ""
                     }
-                if self.title != "" && (self.plot != "본문을 입력해주세요" && self.plot != "") {
+                if (title != "" && plot != "본문을 입력해주세요" && self.plot != "") {
                     Spacer()
                     HStack {
                         Spacer()
