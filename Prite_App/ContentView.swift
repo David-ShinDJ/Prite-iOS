@@ -10,7 +10,7 @@ import CoreData
 
 struct ContentView: View {
     
-    @State var onboardingSheet:Bool = false
+    @State var onboardingSheet:Bool = true
     @AppStorage("Onboarding") private var onboarding:Bool = true
     
     var body: some View {

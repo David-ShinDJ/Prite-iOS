@@ -8,18 +8,93 @@
 import Foundation
 import SwiftUI
 // TODO: 온보딩뷰 끝내기
-struct OnboardingView: View {
+let description: [String] = [
+    "설명문구~~~~~~~~~~~~~~~~~~~~~~~~",
+    "설명문구~!!!!!!!!!!!",
+    "설명문구~~~@@@@@@@@@~~~~~~~",
+    "설명문구~~~@@@@@@@########"
+]
+struct OnboardingContent: View {
     @Binding var onboardingSheet:Bool
+    @Binding var onboadringNumber:Int
     var body: some View {
-            ZStack {
-                OnboardingFirst(onboardingSheet: $onboardingSheet)
-                Spacer()
-                OnboardingButton(onboardingSheet: $onboardingSheet)
+        VStack {
+            Text("Place + Write = Prite")
+                .font(.title)
+            Image("trip\(onboadringNumber)")
+                    .resizable()
+                    .frame(width:.infinity, height:200)
+            Text(description[onboadringNumber])
+                .font(.title2)
+            Spacer()
         }
     }
 }
-
 struct OnboardingButton: View {
+    @Binding var onboardingNumber:Int
+    @State private var animate = true
+    var body: some View {
+        GeometryReader { proxy in
+            LazyHStack(spacing:proxy.size.width / 2.5) {
+                Button(action: {
+                    withAnimation {
+                        onboardingNumber -= 1
+                    }
+                }) {
+                    Text("이전⬅️")
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 15)
+                    .font(Font.title.bold().lowercaseSmallCaps())
+                    .opacity(animate ? 0.5 : 1.0)
+                    .animation(Animation.easeOut(duration: 2.0).repeatForever(), value: animate)
+                    .onAppear {
+                        self.animate = true
+                    }
+                }
+                Button(action: {
+                    withAnimation {
+                        onboardingNumber += 1
+                    }
+                }) {
+                    Text("다음➡️")
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 15)
+                    .font(Font.title.bold().lowercaseSmallCaps())
+                    .opacity(animate ? 0.5 : 1.0)
+                    .animation(Animation.easeOut(duration: 2.0).repeatForever(), value: animate)
+                    .onAppear {
+                        self.animate = true
+                    }
+                }
+            }
+            .frame(width: proxy.size.width, height: proxy.size.height)
+            .position(x:proxy.size.width / 2, y: proxy.size.height / 2)
+        }
+    }
+}
+struct OnboardingView: View {
+    @Binding var onboardingSheet:Bool
+    @State private var onboardingNumber:Int = 0
+    @State private var animate = false
+    private func upOnboardingNumber() {
+        if onboardingNumber < 2 {
+            self.onboardingNumber += 1
+        }
+    }
+    private func downOnboardingNumber() {
+        if onboardingNumber > 0 {
+            self.onboardingNumber -= 1
+        }
+    }
+    var body: some View {
+        ZStack {
+            OnboardingContent(onboardingSheet: $onboardingSheet, onboadringNumber: $onboardingNumber)
+            OnboardingButton(onboardingNumber: $onboardingNumber).opacity(1.2)
+            OnboardingSkipButton(onboardingSheet: $onboardingSheet)
+        }
+    }
+}
+struct OnboardingSkipButton: View {
     
     // #1
     @AppStorage("Onboarding") private var onboarding: Bool = false
@@ -47,10 +122,6 @@ struct OnboardingButton: View {
         }
     }
 }
-
-
-
-
 
 struct Previews_OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
