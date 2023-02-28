@@ -7,64 +7,69 @@
 
 import Foundation
 import SwiftUI
-// TODO: 온보딩뷰 끝내기
 let description: [String] = [
-    "설명문구~~~~~~~~~~~~~~~~~~~~~~~~",
-    "설명문구~!!!!!!!!!!!",
-    "설명문구~~~@@@@@@@@@~~~~~~~",
-    "설명문구~~~@@@@@@@########"
+    "👋 안녕하세요 플라이트입니다 \n 살짝 갑작스럽지만 \n 이 앱을 만든 배경을 알려드리고싶습니다.",
+    "📝 우리는 생각보다 \n 글쓰기라는 창작활동에 대해서 \n 많은 어려움을 느끼고있습니다",
+    "📒 그래서 언제 어디서나 \n 글쓰기를 쉽게 시작할수있게 \n 글을 쓸수있는 앱이 있다면 좋다고 생각했습니다",
+    "🧭 플라이트를 통해 \n 글쓰기하여 리스트로 저장하고 지도에 표시된 심볼을 통해서도 \n 내 글을 확인해볼수있습니다"
 ]
+
 struct OnboardingContent: View {
     @Binding var onboardingSheet:Bool
-    @Binding var onboadringNumber:Int
+    @Binding var onboardingNumber:Int
     var body: some View {
-        VStack {
-            Text("Place + Write = Prite")
+        VStack(alignment:.center, spacing: 40) {
+            Image("onboarding\(onboardingNumber)")
+                .resizable()
+                .frame(maxHeight:400)
+                .ignoresSafeArea()
+            Text(description[onboardingNumber])
                 .font(.title)
-            Image("trip\(onboadringNumber)")
-                    .resizable()
-                    .frame(width:.infinity, height:200)
-            Text(description[onboadringNumber])
-                .font(.title2)
+                .multilineTextAlignment(.center)
             Spacer()
         }
     }
 }
 struct OnboardingButton: View {
+    @State private var animate = false
     @Binding var onboardingNumber:Int
-    @State private var animate = true
+    @Binding var onboardingSheet:Bool
+    @AppStorage("Onboarding") private var onboarding: Bool = true
     var body: some View {
         GeometryReader { proxy in
-            LazyHStack(spacing:proxy.size.width / 2.5) {
-                Button(action: {
+            LazyHStack(spacing:proxy.size.width / 2)  {
+                Button {
                     withAnimation {
-                        onboardingNumber -= 1
+                        if self.onboardingNumber >= 1 {
+                            self.onboardingNumber -= 1
+                        }
                     }
-                }) {
-                    Text("이전⬅️")
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 15)
-                    .font(Font.title.bold().lowercaseSmallCaps())
-                    .opacity(animate ? 0.5 : 1.0)
-                    .animation(Animation.easeOut(duration: 2.0).repeatForever(), value: animate)
-                    .onAppear {
-                        self.animate = true
-                    }
-                }
-                Button(action: {
+                } label: {
+                    Text("⏪️ 이전")
+                        .font(.largeTitle)
+                        .opacity(animate ? 0.2 : 0.8)
+                        .animation(Animation.easeOut(duration: 2.0).repeatForever(), value: animate)
+                        .onAppear {
+                            self.animate = true
+                        }
+                }.opacity(self.onboardingNumber == 0 ? 0.0 : 1.0)
+                Button {
                     withAnimation {
-                        onboardingNumber += 1
+                        if self.onboardingNumber <= 2 {
+                            self.onboardingNumber += 1
+                        } else if self.onboardingNumber == 3 {
+                            onboardingSheet = false
+                            onboarding = onboardingSheet
+                        }
                     }
-                }) {
-                    Text("다음➡️")
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 15)
-                    .font(Font.title.bold().lowercaseSmallCaps())
-                    .opacity(animate ? 0.5 : 1.0)
-                    .animation(Animation.easeOut(duration: 2.0).repeatForever(), value: animate)
-                    .onAppear {
-                        self.animate = true
-                    }
+                } label: {
+                    Text(self.onboardingNumber == 3 ? "시작🏚️" : "다음 ⏩️")
+                        .font(.largeTitle)
+                        .opacity(animate ? 0.2 : 0.8)
+                        .animation(Animation.easeOut(duration: 2.0).repeatForever(), value: animate)
+                        .onAppear {
+                            self.animate = true
+                        }
                 }
             }
             .frame(width: proxy.size.width, height: proxy.size.height)
@@ -75,29 +80,17 @@ struct OnboardingButton: View {
 struct OnboardingView: View {
     @Binding var onboardingSheet:Bool
     @State private var onboardingNumber:Int = 0
-    @State private var animate = false
-    private func upOnboardingNumber() {
-        if onboardingNumber < 2 {
-            self.onboardingNumber += 1
-        }
-    }
-    private func downOnboardingNumber() {
-        if onboardingNumber > 0 {
-            self.onboardingNumber -= 1
-        }
-    }
     var body: some View {
-        ZStack {
-            OnboardingContent(onboardingSheet: $onboardingSheet, onboadringNumber: $onboardingNumber)
-            OnboardingButton(onboardingNumber: $onboardingNumber).opacity(1.2)
-            OnboardingSkipButton(onboardingSheet: $onboardingSheet)
+            ZStack {
+                OnboardingContent(onboardingSheet: $onboardingSheet, onboardingNumber: $onboardingNumber)
+                OnboardingButton(onboardingNumber: $onboardingNumber, onboardingSheet: $onboardingSheet)
+                OnboardingSkipButton(onboardingSheet: $onboardingSheet)
         }
     }
 }
 struct OnboardingSkipButton: View {
-    
-    // #1
-    @AppStorage("Onboarding") private var onboarding: Bool = false
+
+    @AppStorage("Onboarding") private var onboarding: Bool = true
     @Binding var onboardingSheet:Bool
     
     var body: some View {
@@ -112,7 +105,7 @@ struct OnboardingSkipButton: View {
                     .padding(.vertical, 15)
                     .font(Font.title2.bold().lowercaseSmallCaps())
                 }
-                .background(Color.white)
+                .background(Color.blue)
                 .foregroundColor(.black)
                 .cornerRadius(40)
                 .frame(minWidth: 0, maxWidth: proxy.size.width-40)
