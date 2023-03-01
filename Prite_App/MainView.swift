@@ -14,34 +14,34 @@ struct MainView: View {
     @StateObject var proxyDatabase:ProxyDatabase = ProxyDatabase()
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
-    @State private var introduction: String = "List"
+    @State private var introduction: String = "작성한 글목록을 보여줍니다"
     var body: some View {
         VStack {
             Text(introduction)
             TabView(selection:$introduction){
                 ListView(proxyDatabase: proxyDatabase)
-                    .tag("List")
+                    .tag("작성한 글목록을 보여줍니다")
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)
                     .tabItem {
                         Label("Writing", systemImage: "list.clipboard")
                     }
                 WriteView(proxyDatabase:proxyDatabase)
-                    .tag("Write")
+                    .tag("현재위치한곳에 사진을 찍은뒤 글을 작성해보세요")
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)
                     .tabItem {
                         Label("Write", systemImage: "highlighter")
                 }
                 MapView(proxyDatabase: proxyDatabase)
-                    .tag("Map")
+                    .tag("내가작성한 글의 위치에 따라 지도에 표시됩니다")
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)
                     .tabItem {
                         Label("Map", systemImage: "location.fill")
                 }
                 SettingView()
-                    .tag("Setting")
+                    .tag("폰트&테마&지도크기를 변경할수있습니다")
                     .environmentObject(settingEnvironment)
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)

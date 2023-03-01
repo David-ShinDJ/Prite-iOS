@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+let imageDatas: [Image] = Array(repeating: Image("trip0"), count: 20)
 struct ListView: View {
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
@@ -23,7 +23,7 @@ struct ListView: View {
         return dateFormatter.string(from: nowDate)
     }
     
-    let basic_rows = [GridItem(.flexible(maximum:24),spacing: 0), GridItem(.flexible(maximum:200),spacing: 0)]
+    let basic_rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
     
 
     // TODO: 이진탐색 알고리즘 전체 데이터 // 2  나누어서 맨위왼쪽부터 채워넣어보자 위에 10개 아래 10개후 20개 넘어가는경우 오른쪽 아래부터 밀리게끔제작
@@ -32,35 +32,51 @@ struct ListView: View {
         NavigationView {
             VStack(spacing:0) {
                 ScrollView(.horizontal) {
-                    LazyHGrid(rows: basic_rows, spacing:8) {
-                        ForEach(0...proxyDatabase.models.count - 1, id: \.self) { index in
-                            NavigationLink {
-                                DetailView(mapModel: proxyDatabase.models[index])
+                    LazyHGrid(rows: basic_rows,spacing:20) {
+                        ForEach(0...imageDatas.count / 2 - 1, id: \.self) { index in
+                        NavigationLink {
+//                                DetailView(mapModel: proxyDatabase.models[index])
                             }
                         label: {
-                            Text(proxyDatabase.models[index].title!)
+                            Text(String(format: "Index : %D", Int(index)))
                                 .lineLimit(2)
                                 .foregroundColor(theme.buttonColor)
+                                .font(.title3)
                         }
-                            Image(uiImage: proxyDatabase.models[index].image!)
+                            imageDatas[index]
                                 .resizable()
-                                .frame(width:60, height:200)
-                                .clipped()
-                                .cornerRadius(200)
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(30)
                         }
                     }
                 }
                 ScrollView(.horizontal) {
-                    LazyHGrid(rows: basic_rows,spacing: 10) {
-                        ForEach(0...1, id: \.self) { index in
-                            Label("Title", systemImage: "bolt.fill")
-                            Rectangle()
+                    LazyHGrid(rows: basic_rows,spacing:10) {
+                        ForEach(imageDatas.count / 2 ... imageDatas.count - 1, id: \.self) { index in
+                            NavigationLink {
+    //                                DetailView(mapModel: proxyDatabase.models[index])
+                                }
+                            label: {
+                                Text(String(format: "Index : %D", Int(index)))
+                                    .lineLimit(2)
+                                    .foregroundColor(theme.buttonColor)
+                                    .font(.title3)
+                            }
+                                imageDatas[index]
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(30)
                         }
                     }
                 }
                 Spacer()
                 QuoteView(length: "long")
-                    .font(.custom(font.plotFont, size: 18))
+                    .font(.custom(font.plotFont, size: 24))
+                Button {
+                    print(imageDatas.count)
+                } label: {
+                    Text("데이터확인")
+                }
                 Spacer()
             }
             .navigationBarHidden(true)
