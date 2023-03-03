@@ -40,31 +40,37 @@ struct WriteView: View {
                         Image(systemName: "photo")
                             .resizable()
                             .frame(maxWidth: 48, maxHeight: 48)
+                            .foregroundColor(theme.iconColor)
                         Button {
                             self.isPresented.toggle()
                         } label: {
                             Image(systemName: "plus")
                                 .resizable()
                                 .frame(maxWidth: 48, maxHeight: 48)
+                                .foregroundColor(theme.iconColor)
                         }.sheet(isPresented: $isPresented,onDismiss: {
                         },content: {
                             ImagePicker(sourceType: self.sourceType, image: $image)
                         })
                         Text("사진을 추가해주세요")
-                            .font(.custom("BlackHanSans-Regular.ttf", size: 28))
+                            .font(.custom(font.titleFont, size:24))
                     }
                 }
                 HStack(spacing:10){
                     Text("제목")
                         .padding()
+                        .font(.custom(font.titleFont, size:24))
                     Spacer()
                     TextField("제목을 입력해주세요", text: $title)
+                        .font(.custom(font.titleFont, size:24))
+                        .foregroundColor(theme.fontColor)
                         .onSubmit {
                         }
                 }
                 Divider()
                 TextEditor(text: $plot)
                     .font(.custom(font.plotFont, size:18))
+                    .foregroundColor(theme.fontColor)
                 Button {
                     print(locationManager.region)
                 } label: {

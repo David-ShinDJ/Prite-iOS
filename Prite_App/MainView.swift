@@ -18,8 +18,9 @@ struct MainView: View {
     var body: some View {
         VStack {
             Text(introduction)
+                .font(.custom(font.titleFont, size: 24))
             TabView(selection:$introduction){
-                ListView(proxyDatabase: proxyDatabase)
+                ListView()
                     .tag("작성한 글목록을 보여줍니다")
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)
@@ -48,7 +49,7 @@ struct MainView: View {
                     .tabItem {
                         Label("Setting", systemImage: "gearshape.fill")
                     }
-            }
+            }.accentColor(theme.buttonColor)
         }
     }
 }

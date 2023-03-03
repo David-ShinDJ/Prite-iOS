@@ -37,6 +37,7 @@ struct QuoteView: View {
         
         VStack {
             Text(quoteTitle)
+                .multilineTextAlignment(.center)
             Text(quoteSubTitle)
         }.onAppear {
             if self.length == "short" {

@@ -22,6 +22,8 @@ struct MapView: View {
         locationManager.checkLocation()
     }
     
+    var model: Model = Model(image: Image("trip0"), data: Date(), title: "title", plot: "Plot")
+    
     //MARK : Published Data 업데이트되서 Publishing changes from within view updates is not allowed, this will cause undefined behavior. 발생함
     
     var body: some View {
@@ -30,7 +32,7 @@ struct MapView: View {
                 Map(coordinateRegion: $locationManager.region, showsUserLocation: true, annotationItems:proxyDatabase.models) {
                     data in MapAnnotation(coordinate: data.coordinate) {
                         NavigationLink {
-                            DetailView(mapModel: data)
+                            DetailView(model:model)
                         } label: {
                             Circle()
                                 .stroke(Color(.red), lineWidth: 3)
@@ -41,9 +43,9 @@ struct MapView: View {
                 QuoteView(length: "short")
                     .font(.custom(font.titleFont, size: 18))
                 Button {
-                    
+                    self.locationManager.checkLocation()
                 } label: {
-                    Text("MapMagnitude Check")
+                    Text("위치재확인")
                         .font(.custom(font.titleFont, size: 18))
                 }
                 

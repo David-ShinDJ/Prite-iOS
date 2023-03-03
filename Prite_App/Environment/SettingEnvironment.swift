@@ -111,10 +111,10 @@ struct BasicFont: SettingFont {
 
 struct EliteFont: SettingFont {
     var titleFont: String {
-        "Dongle-Regular"
+        "NanumPenScript-Regular"
     }
     var plotFont: String {
-        "NanumPenScript-Regular"
+        "Dongle-Regular"
     }
 
 }
