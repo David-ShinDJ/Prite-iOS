@@ -8,14 +8,14 @@
 import Foundation
 import SwiftUI
 
-// TODO: UI완성하기
+
 struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     
     
-    let mapModel: MapModel
+    let model: Model
     
     @State private var title: String = ""
     @State private var plot: String = ""
@@ -33,24 +33,23 @@ struct DetailView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 10) {
-                Image(uiImage: mapModel.image!)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: 400, maxHeight: 240)
-                    .border(.orange)
-                    .clipped()
-                TextField("title", text:$title).disabled(!updating)
-                    .padding()
-                TextField("plot", text:$plot)
-                    .disabled(!updating)
-                    .padding()
-                Spacer()
-                QuoteView(length: "long")
-            }
-            .onAppear {
-                self.title = mapModel.title!
-                self.plot = mapModel.plot!
+            ScrollView {
+                VStack(spacing: 10) {
+                    model.image
+                        .resizable()
+                        .scaledToFill()
+                    TextField("title", text:$title).disabled(!updating)
+                        .padding()
+                        .font(.custom(font.titleFont, size: 24))
+                        .foregroundColor(theme.fontColor)
+                    TextField("plot", text:$plot)
+                        .disabled(!updating)
+                        .padding()
+                        .font(.custom(font.plotFont, size: 18))
+                        .foregroundColor(theme.fontColor)
+                    Spacer()
+                    QuoteView(length: "long")
+                }
             }
         }
         .toolbar {
@@ -65,10 +64,10 @@ struct DetailView: View {
     }
 }
 struct DetailView_Previews: PreviewProvider {
-    static let data = MapModel(title:"모란시장", plot:"모란시장에서...", image:UIImage(named: "model0")!,latitude: 37.42917,longitude: 127.12710)
+    static let model:Model = Model(image: Image("trip0"), data: Date(), title: "title", plot: "Plot")
     
     static var previews: some View {
-        DetailView(mapModel: data)
+        DetailView(model:model)
         
     }
 }

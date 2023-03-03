@@ -7,77 +7,109 @@
 
 import Foundation
 import SwiftUI
-let imageDatas: [Image] = Array(repeating: Image("trip0"), count: 20)
+
+class Model {
+    let image:Image
+    let data:Date
+    let title: String
+    let plot: String
+    
+    init(image: Image, data: Date, title:String, plot:String) {
+        self.image = image
+        self.data = data
+        self.title = title
+        self.plot = plot
+    }
+}
+
 struct ListView: View {
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     
-    @ObservedObject var proxyDatabase: ProxyDatabase
-    
-    
-    
-    var dateString:String {
-        let nowDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        return dateFormatter.string(from: nowDate)
-    }
-    
-    let basic_rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
-    
+    @State private var randomeModels:[Model] = []
+    @State private var upCounts:Int = 0
+    @State private var downCounts:Int = 0
+    @State private var upModels:[Model] = []
+    @State private var downModels:[Model] = []
 
-    // TODO: 이진탐색 알고리즘 전체 데이터 // 2  나누어서 맨위왼쪽부터 채워넣어보자 위에 10개 아래 10개후 20개 넘어가는경우 오른쪽 아래부터 밀리게끔제작
+    
+    let Rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
+    
     
     var body: some View {
         NavigationView {
             VStack(spacing:0) {
-                ScrollView(.horizontal) {
-                    LazyHGrid(rows: basic_rows,spacing:20) {
-                        ForEach(0...imageDatas.count / 2 - 1, id: \.self) { index in
-                        NavigationLink {
-//                                DetailView(mapModel: proxyDatabase.models[index])
-                            }
-                        label: {
-                            Text(String(format: "Index : %D", Int(index)))
-                                .lineLimit(2)
-                                .foregroundColor(theme.buttonColor)
-                                .font(.title3)
-                        }
-                            imageDatas[index]
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(30)
-                        }
-                    }
-                }
-                ScrollView(.horizontal) {
-                    LazyHGrid(rows: basic_rows,spacing:10) {
-                        ForEach(imageDatas.count / 2 ... imageDatas.count - 1, id: \.self) { index in
-                            NavigationLink {
-    //                                DetailView(mapModel: proxyDatabase.models[index])
+                if randomeModels.count == 0 {
+                    Spacer()
+                    Text("글을써서 리스트를 추가해주세요")
+                        .font(.custom(font.titleFont, size: 24))
+                    Spacer()
+                } else {
+                    ScrollView(.horizontal) {
+                        LazyHGrid(rows: Rows,spacing:20) {
+                            ForEach(0..<upCounts, id: \.self) { index in
+                                NavigationLink {
+                                    DetailView(model:upModels[index])
+                                    }
+                                label: {
+                                    Text(upModels[index].title)
+                                        .lineLimit(2)
+                                        .font(.custom(font.plotFont, size: 24))
+                                        .foregroundColor(theme.iconColor)
                                 }
-                            label: {
-                                Text(String(format: "Index : %D", Int(index)))
-                                    .lineLimit(2)
-                                    .foregroundColor(theme.buttonColor)
-                                    .font(.title3)
+                                upModels[index].image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .cornerRadius(30)
+                                }
                             }
-                                imageDatas[index]
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .cornerRadius(30)
                         }
                     }
+                    ScrollView(.horizontal) {
+                        LazyHGrid(rows: Rows,spacing:10) {
+                            ForEach(0..<downCounts, id: \.self) { index in
+                                NavigationLink {
+                                    DetailView(model:downModels[index])
+                                    }
+                                label: {
+                                    Text(downModels[index].title)
+                                        .font(.custom(font.plotFont, size: 24))
+                                        .foregroundColor(theme.iconColor)
+                                }
+                                downModels[index].image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .cornerRadius(30)
+                            }
+                        }
                 }
                 Spacer()
                 QuoteView(length: "long")
                     .font(.custom(font.plotFont, size: 24))
-                Button {
-                    print(imageDatas.count)
-                } label: {
-                    Text("데이터확인")
-                }
                 Spacer()
+            }
+            .onAppear {
+                var model:[Model] = []
+                for i in 0...Int.random(in: 0...19) {
+                    let newModel = Model(image: Image("trip\(i)"), data: Date(), title: "title\(i)", plot:"plot\(i)")
+                    model.append(newModel)
+                }
+                self.randomeModels = model
+                print(self.randomeModels.count)
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                let evenIndices = array.indices.filter { $0 % 2 == 0 }
+                let evenValues = evenIndices.map { array[$0] }
+                print(evenValues) // [1, 3, 5, 7, 9]
+                
+                let up = randomeModels.indices.filter{ $0 % 2 == 0}
+                let upModel = up.map { randomeModels[$0]}
+                self.upModels = upModel
+                let down = randomeModels.indices.filter{ $0 % 2 == 1}
+                let downModel = down.map { randomeModels[$0]}
+                self.downModels = downModel
+                self.upCounts = self.upModels.count
+                self.downCounts = self.downModels.count
+                
             }
             .navigationBarHidden(true)
             .navigationTitle("리스트")
@@ -86,8 +118,8 @@ struct ListView: View {
 }
 
 struct ListView_Previews: PreviewProvider {
-    static var proxyDatabase:ProxyDatabase = ProxyDatabase()
+
     static var previews: some View {
-        ListView( proxyDatabase: proxyDatabase)
+        ListView()
     }
 }

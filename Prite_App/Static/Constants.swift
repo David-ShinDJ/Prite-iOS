@@ -87,3 +87,10 @@ class Example {
 
 }
 
+
+var dateString:String {
+    let nowDate = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+    return dateFormatter.string(from: nowDate)
+}

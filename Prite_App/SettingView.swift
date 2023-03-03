@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//TODO: 지도크기변경 조절
 enum FontStyle: String, CaseIterable, Identifiable {
     case basic, elite, cute
     var id: Self { self }

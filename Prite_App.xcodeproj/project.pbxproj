@@ -36,8 +36,27 @@
 		63F1E24029A74A1800B2BB0E /* SettingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F1E23F29A74A1800B2BB0E /* SettingEnvironment.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		637730D929B0D7E4009F3851 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B9603E299A81D7009F234A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63B96045299A81D7009F234A;
+			remoteInfo = Prite_App;
+		};
+		637730E829B0D7ED009F3851 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B9603E299A81D7009F234A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63B96045299A81D7009F234A;
+			remoteInfo = Prite_App;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		635DE888299E0F640021FB63 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		637730D529B0D7E4009F3851 /* Prite_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		637730E229B0D7ED009F3851 /* Prite_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		638FDBC929AB7A71001F880C /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		638FDBCC29AB7BA1001F880C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63B96046299A81D7009F234A /* Prite_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prite_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +88,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		637730D229B0D7E4009F3851 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		637730DF29B0D7ED009F3851 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63B96043299A81D7009F234A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				63B96046299A81D7009F234A /* Prite_App.app */,
+				637730D529B0D7E4009F3851 /* Prite_AppTests.xctest */,
+				637730E229B0D7ED009F3851 /* Prite_AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,6 +216,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		637730D429B0D7E4009F3851 /* Prite_AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 637730DB29B0D7E4009F3851 /* Build configuration list for PBXNativeTarget "Prite_AppTests" */;
+			buildPhases = (
+				637730D129B0D7E4009F3851 /* Sources */,
+				637730D229B0D7E4009F3851 /* Frameworks */,
+				637730D329B0D7E4009F3851 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				637730DA29B0D7E4009F3851 /* PBXTargetDependency */,
+			);
+			name = Prite_AppTests;
+			productName = Prite_AppTests;
+			productReference = 637730D529B0D7E4009F3851 /* Prite_AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		637730E129B0D7ED009F3851 /* Prite_AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 637730EA29B0D7ED009F3851 /* Build configuration list for PBXNativeTarget "Prite_AppUITests" */;
+			buildPhases = (
+				637730DE29B0D7ED009F3851 /* Sources */,
+				637730DF29B0D7ED009F3851 /* Frameworks */,
+				637730E029B0D7ED009F3851 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				637730E929B0D7ED009F3851 /* PBXTargetDependency */,
+			);
+			name = Prite_AppUITests;
+			productName = Prite_AppUITests;
+			productReference = 637730E229B0D7ED009F3851 /* Prite_AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		63B96045299A81D7009F234A /* Prite_App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63B96059299A81D8009F234A /* Build configuration list for PBXNativeTarget "Prite_App" */;
@@ -208,6 +279,14 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					637730D429B0D7E4009F3851 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 63B96045299A81D7009F234A;
+					};
+					637730E129B0D7ED009F3851 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 63B96045299A81D7009F234A;
+					};
 					63B96045299A81D7009F234A = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -227,11 +306,27 @@
 			projectRoot = "";
 			targets = (
 				63B96045299A81D7009F234A /* Prite_App */,
+				637730D429B0D7E4009F3851 /* Prite_AppTests */,
+				637730E129B0D7ED009F3851 /* Prite_AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		637730D329B0D7E4009F3851 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		637730E029B0D7ED009F3851 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63B96044299A81D7009F234A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -251,6 +346,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		637730D129B0D7E4009F3851 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		637730DE29B0D7ED009F3851 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63B96042299A81D7009F234A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,7 +387,90 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		637730DA29B0D7E4009F3851 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63B96045299A81D7009F234A /* Prite_App */;
+			targetProxy = 637730D929B0D7E4009F3851 /* PBXContainerItemProxy */;
+		};
+		637730E929B0D7ED009F3851 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63B96045299A81D7009F234A /* Prite_App */;
+			targetProxy = 637730E829B0D7ED009F3851 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		637730DC29B0D7E4009F3851 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5VGQ6HPYR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david0929.Prite-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Prite_App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Prite_App";
+			};
+			name = Debug;
+		};
+		637730DD29B0D7E4009F3851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5VGQ6HPYR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david0929.Prite-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Prite_App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Prite_App";
+			};
+			name = Release;
+		};
+		637730EB29B0D7ED009F3851 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5VGQ6HPYR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david0929.Prite-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Prite_App;
+			};
+			name = Debug;
+		};
+		637730EC29B0D7ED009F3851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5VGQ6HPYR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.david0929.Prite-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Prite_App;
+			};
+			name = Release;
+		};
 		63B96057299A81D8009F234A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -464,6 +656,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		637730DB29B0D7E4009F3851 /* Build configuration list for PBXNativeTarget "Prite_AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				637730DC29B0D7E4009F3851 /* Debug */,
+				637730DD29B0D7E4009F3851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		637730EA29B0D7ED009F3851 /* Build configuration list for PBXNativeTarget "Prite_AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				637730EB29B0D7ED009F3851 /* Debug */,
+				637730EC29B0D7ED009F3851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		63B96041299A81D7009F234A /* Build configuration list for PBXProject "Prite_App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
