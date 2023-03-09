@@ -8,47 +8,58 @@
 import Foundation
 import SwiftUI
 
-
+enum Field: Hashable {
+    case title
+    case plot
+}
+// TODO: CoreData Update & Delete
 struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     
+    @FocusState private var focusedField: Field?
     
-    let model: Model
-    
+    let write: Write
     @State private var title: String = ""
     @State private var plot: String = ""
     @State private var updating: Bool = false
-    
     private func modify() {
         if updating {
-            print(self.title, self.plot)
+            self.focusedField = .plot
             self.presentationMode.wrappedValue.dismiss()
         } else {
             updating.toggle()
         }
         
     }
-    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 10) {
-                    model.image
+                    Image(uiImage: UIImage(data: write.image!)!)
                         .resizable()
                         .scaledToFill()
-                    TextField("title", text:$title).disabled(!updating)
+                    TextField("제목", text:$title)
+                        .focused($focusedField, equals: .title)
                         .padding()
                         .font(.custom(font.titleFont, size: 24))
                         .foregroundColor(theme.fontColor)
-                    TextField("plot", text:$plot)
                         .disabled(!updating)
+                    TextEditor(text:$plot)
+                        .focused($focusedField, equals: .plot)
                         .padding()
                         .font(.custom(font.plotFont, size: 18))
                         .foregroundColor(theme.fontColor)
+                        .disabled(!updating)
+                        .aspectRatio(2.0, contentMode: .fill)
                     Spacer()
                     QuoteView(length: "long")
+                        .font(.custom(font.titleFont, size: 18))
+                }
+                .onAppear {
+                    self.title = write.title ?? "제목없음"
+                    self.plot = write.plot ?? "본문없음"
                 }
             }
         }
@@ -61,13 +72,5 @@ struct DetailView: View {
                 }
             }
         }
-    }
-}
-struct DetailView_Previews: PreviewProvider {
-    static let model:Model = Model(image: Image("trip0"), data: Date(), title: "title", plot: "Plot")
-    
-    static var previews: some View {
-        DetailView(model:model)
-        
     }
 }

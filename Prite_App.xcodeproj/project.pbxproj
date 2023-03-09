@@ -17,7 +17,6 @@
 		63B96053299A81D8009F234A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96052299A81D8009F234A /* Persistence.swift */; };
 		63B96056299A81D8009F234A /* PriteDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63B96054299A81D8009F234A /* PriteDatabase.xcdatamodeld */; };
 		63B9605E299A8600009F234A /* WriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9605D299A8600009F234A /* WriteModel.swift */; };
-		63B96060299A89E0009F234A /* ProxyDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9605F299A89E0009F234A /* ProxyDatabase.swift */; };
 		63B96062299A8D48009F234A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96061299A8D48009F234A /* ImagePicker.swift */; };
 		63B96064299A8FE8009F234A /* CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96063299A8FE8009F234A /* CoreLocation.swift */; };
 		63BC5CCF299CFE380002BC1D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5CCE299CFE380002BC1D /* MainView.swift */; };
@@ -67,7 +66,6 @@
 		63B96052299A81D8009F234A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		63B96055299A81D8009F234A /* PriteDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PriteDatabase.xcdatamodel; sourceTree = "<group>"; };
 		63B9605D299A8600009F234A /* WriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModel.swift; sourceTree = "<group>"; };
-		63B9605F299A89E0009F234A /* ProxyDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyDatabase.swift; sourceTree = "<group>"; };
 		63B96061299A8D48009F234A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		63B96063299A8FE8009F234A /* CoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocation.swift; sourceTree = "<group>"; };
 		63BC5CCE299CFE380002BC1D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -149,10 +147,8 @@
 				63B96049299A81D7009F234A /* Prite_AppApp.swift */,
 				63B9604B299A81D7009F234A /* ContentView.swift */,
 				63BC5CD8299D11660002BC1D /* OnboardingView.swift */,
-				63B9605F299A89E0009F234A /* ProxyDatabase.swift */,
 				63B9604D299A81D8009F234A /* Assets.xcassets */,
 				63B96052299A81D8009F234A /* Persistence.swift */,
-				63B96054299A81D8009F234A /* PriteDatabase.xcdatamodeld */,
 				63BC5CCE299CFE380002BC1D /* MainView.swift */,
 				63BC5CD4299D09170002BC1D /* ListView.swift */,
 				63BC5CD6299D0F610002BC1D /* SettingView.swift */,
@@ -176,6 +172,7 @@
 		63B9605C299A85B7009F234A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				63B96054299A81D8009F234A /* PriteDatabase.xcdatamodeld */,
 				63B9605D299A8600009F234A /* WriteModel.swift */,
 				63B96061299A8D48009F234A /* ImagePicker.swift */,
 				63B96063299A8FE8009F234A /* CoreLocation.swift */,
@@ -367,7 +364,6 @@
 				63B96053299A81D8009F234A /* Persistence.swift in Sources */,
 				638FDBCD29AB7BA1001F880C /* Constants.swift in Sources */,
 				63BC5CCF299CFE380002BC1D /* MainView.swift in Sources */,
-				63B96060299A89E0009F234A /* ProxyDatabase.swift in Sources */,
 				63BC5CD1299CFE6E0002BC1D /* MapView.swift in Sources */,
 				63B9604C299A81D7009F234A /* ContentView.swift in Sources */,
 				63BC5CD3299D04AA0002BC1D /* WriteView.swift in Sources */,

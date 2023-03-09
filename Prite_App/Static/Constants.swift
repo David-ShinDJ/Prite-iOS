@@ -7,7 +7,12 @@
 
 import Foundation
 import SwiftUI
+import CoreLocation
+import MapKit
+
 class Constants {
+    static let defaultLocation = CLLocationCoordinate2D(latitude: 37.5511, longitude: 126.9882)
+    static let mapMagnitude = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
 
     static let shotQuotes = [
         "작가란 오늘 아침에 글을 쓴 사람이다",

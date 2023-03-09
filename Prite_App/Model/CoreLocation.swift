@@ -9,12 +9,11 @@ import Foundation
 import MapKit
 import CoreLocation
 
-private let defaultLocation = CLLocationCoordinate2D(latitude: 37.5511, longitude: 126.9882)
-private let mapMagnitude = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+
+class CoreLocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
-    @Published var region = MKCoordinateRegion(center: defaultLocation, span: mapMagnitude)
+    @Published var region = MKCoordinateRegion(center: Constants.defaultLocation, span: Constants.mapMagnitude)
     
     func setMagnitude(latitudeDelta: Double, longitudeDelta: Double) {
         var newRegion = self.region
@@ -40,7 +39,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         case .denied:
             print("사용자의 위치정보 사용을 거부당했습니다")
         case .authorizedAlways, .authorizedWhenInUse:
-            self.region = MKCoordinateRegion(center: locationManager.location?.coordinate ?? defaultLocation, span: mapMagnitude)
+            self.region = MKCoordinateRegion(center: locationManager.location?.coordinate ?? Constants.defaultLocation, span: Constants.mapMagnitude)
+            locationManager.stopUpdatingLocation()
         default:
             break
         }
@@ -52,7 +52,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             self.locationManager = CLLocationManager()
             self.locationManager!.delegate = self
         } else {
-            print("외부환경 또는 기기의 문제가 발생하여 위치정보를 확인할수 없습니다")
+        print("외부환경 또는 기기의 문제가 발생하여 위치정보를 확인할수 없습니다")
         }
     }
     

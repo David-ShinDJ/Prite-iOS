@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+import Foundation
+import SwiftUI
+
 struct QuoteView: View {
     let length:String
     @State private var quoteTitle:String = ""
