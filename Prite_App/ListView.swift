@@ -18,9 +18,8 @@ struct ListView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Write.date, ascending: false)],
                   animation: .default)
     private var writes: FetchedResults<Write>
-    
+
     let Rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
-    
     
     var body: some View {
         NavigationView {
@@ -33,7 +32,7 @@ struct ListView: View {
                 } else if writes.count <= 10 {
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: Rows,spacing:20) {
-                            ForEach(0..<writes.count / 2, id: \.self) { index in
+                            ForEach(0...writes.count - 1, id: \.self) { index in
                                 NavigationLink {
                                     DetailView(write: writes[index])
                                     }
@@ -54,7 +53,7 @@ struct ListView: View {
                 else if writes.count > 10 {
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: Rows,spacing:20) {
-                            ForEach(0..<writes.count / 2, id: \.self) { index in
+                            ForEach(0...writes.count / 2 - 1,id: \.self) { index in
                                 NavigationLink {
                                     DetailView(write: writes[index])
                                     }
@@ -73,7 +72,7 @@ struct ListView: View {
                         }
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: Rows,spacing:10) {
-                            ForEach(writes.count / 2..<writes.count, id: \.self) { index in
+                            ForEach(writes.count / 2...writes.count - 1, id: \.self) { index in
                                 NavigationLink {
                                     DetailView(write: writes[index])
                                     }

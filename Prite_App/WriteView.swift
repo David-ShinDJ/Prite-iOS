@@ -15,7 +15,6 @@ enum WriteError: Error {
 }
 struct WriteView: View {
     @State private var showAlert = false
-    @State private var writeFail = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @Environment(\.presentationMode) var presentationMode
@@ -62,17 +61,15 @@ struct WriteView: View {
     
     func errorHandleWrite(completion: @escaping (Bool) -> Void) throws {
         if (title.isEmpty || plot.isEmpty ) {
-            writeFail = true
             throw WriteError.emptyStringError
         }
         if (title.count <= 1 || plot.count <= 5)  {
-            writeFail = true
             throw WriteError.limitStringError
         }
         if (self.coreLocationManager.region.center.latitude == Constants.defaultLocation.latitude || self.coreLocationManager.region.center.latitude == Constants.defaultLocation.longitude ) {
             throw WriteError.locationDefaultError
         }
-        writeFail = false
+
         completion(true)
     
     }
