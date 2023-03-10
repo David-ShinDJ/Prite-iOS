@@ -42,6 +42,7 @@ struct MainView: View {
                     .tag("내가 작성한 글의 위치에 따라 지도에 표시됩니다")
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem {
                         Label("Map", systemImage: "location.fill")
                 }

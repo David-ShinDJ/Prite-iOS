@@ -36,6 +36,7 @@ struct WriteView: View {
             newWrite.title = self.title
             newWrite.plot = self.plot
             newWrite.date = Date()
+            newWrite.uuid = UUID()
             if image == nil {
                 newWrite.image = UIImage(named: "trip10")?.jpegData(compressionQuality: 0.9)
             } else {

@@ -13,7 +13,7 @@ import CoreLocation
 
 class CoreLocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
-    @Published var region = MKCoordinateRegion(center: Constants.defaultLocation, span: Constants.mapMagnitude)
+    var region = MKCoordinateRegion(center: Constants.defaultLocation, span: Constants.mapMagnitude)
     
     func setMagnitude(latitudeDelta: Double, longitudeDelta: Double) {
         var newRegion = self.region

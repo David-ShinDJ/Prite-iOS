@@ -18,8 +18,11 @@ struct ListView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Write.date, ascending: false)],
                   animation: .default)
     private var writes: FetchedResults<Write>
+    
+    // MARK: SearchBar 구현
 
     let Rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
+    
     
     var body: some View {
         NavigationView {
