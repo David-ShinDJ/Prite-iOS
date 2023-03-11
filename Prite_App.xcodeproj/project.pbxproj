@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		635DE889299E0F640021FB63 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DE888299E0F640021FB63 /* DetailView.swift */; };
+		638E548029BCAAB700CDEE21 /* SerachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638E547F29BCAAB700CDEE21 /* SerachView.swift */; };
 		638FDBCA29AB7A71001F880C /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBC929AB7A71001F880C /* QuoteView.swift */; };
 		638FDBCD29AB7BA1001F880C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBCC29AB7BA1001F880C /* Constants.swift */; };
 		63B9604A299A81D7009F234A /* Prite_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96049299A81D7009F234A /* Prite_AppApp.swift */; };
@@ -56,6 +57,7 @@
 		635DE888299E0F640021FB63 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		637730D529B0D7E4009F3851 /* Prite_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		637730E229B0D7ED009F3851 /* Prite_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		638E547F29BCAAB700CDEE21 /* SerachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachView.swift; sourceTree = "<group>"; };
 		638FDBC929AB7A71001F880C /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		638FDBCC29AB7BA1001F880C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63B96046299A81D7009F234A /* Prite_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prite_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 				63B96052299A81D8009F234A /* Persistence.swift */,
 				63BC5CCE299CFE380002BC1D /* MainView.swift */,
 				63BC5CD4299D09170002BC1D /* ListView.swift */,
+				638E547F29BCAAB700CDEE21 /* SerachView.swift */,
 				63BC5CD6299D0F610002BC1D /* SettingView.swift */,
 				635DE888299E0F640021FB63 /* DetailView.swift */,
 				63BC5CD2299D04AA0002BC1D /* WriteView.swift */,
@@ -377,6 +380,7 @@
 				63B9604A299A81D7009F234A /* Prite_AppApp.swift in Sources */,
 				63B96064299A8FE8009F234A /* CoreLocation.swift in Sources */,
 				63F1E24029A74A1800B2BB0E /* SettingEnvironment.swift in Sources */,
+				638E548029BCAAB700CDEE21 /* SerachView.swift in Sources */,
 				63BC5CD9299D11660002BC1D /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

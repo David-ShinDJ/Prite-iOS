@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 // Core Data 연결후 ScrollView 수정하기
 struct ListView: View {
@@ -18,11 +19,26 @@ struct ListView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Write.date, ascending: false)],
                   animation: .default)
     private var writes: FetchedResults<Write>
+    @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
     
-    // MARK: SearchBar 구현
-
     let Rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
     
+    private func serachWrite() {
+        lazy var explainPredicate: NSPredicate = {
+            return NSPredicate(format: "title CONTAINS %@", searchViewModel.searchText)
+        }()
+        
+        let fetchRequest = NSFetchRequest<Write>(entityName: "Write")
+        fetchRequest.predicate = explainPredicate
+        
+        do {
+            let result = try viewContext.fetch(fetchRequest)
+            print(writes)
+        } catch let error as NSError {
+            print("count not fetched \(error), \(error.userInfo)")
+        }
+        
+    }
     
     var body: some View {
         NavigationView {
@@ -33,6 +49,10 @@ struct ListView: View {
                         .font(.custom(font.titleFont, size: 24))
                     Spacer()
                 } else if writes.count <= 10 {
+                    SearchView(searchViewModel: searchViewModel)
+                        .onAdd {
+                            serachWrite()
+                        }
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: Rows,spacing:20) {
                             ForEach(0...writes.count - 1, id: \.self) { index in
@@ -54,6 +74,10 @@ struct ListView: View {
                         }
                     }
                 else if writes.count > 10 {
+                    SearchView(searchViewModel: searchViewModel)
+                        .onAdd {
+                            serachWrite()
+                        }
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: Rows,spacing:20) {
                             ForEach(0...writes.count / 2 - 1,id: \.self) { index in
@@ -104,12 +128,5 @@ struct ListView: View {
             .navigationBarHidden(true)
             .navigationTitle("리스트")
         }
-    }
-}
-
-struct ListView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        ListView()
     }
 }
