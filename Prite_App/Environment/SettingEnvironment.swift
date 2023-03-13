@@ -9,14 +9,15 @@ import Foundation
 import SwiftUI
 
 final class SettingEnvironment: ObservableObject {
+
     @Published var theme:SettingTheme
     @Published var font:SettingFont
-    @Published var mapMagnitude:Double
-    init(theme: SettingTheme = BasicTheme(), font: SettingFont = BasicFont()) {
-        self.theme = theme
-        self.font = font
-        self.mapMagnitude = 0.5
+
+    init() {
+        self.font = BasicFont()
+        self.theme = BasicTheme()
     }
+    
 }
 
 

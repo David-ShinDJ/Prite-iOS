@@ -38,7 +38,8 @@ struct WriteView: View {
             newWrite.date = Date()
             newWrite.uuid = UUID()
             if image == nil {
-                newWrite.image = UIImage(named: "trip10")?.jpegData(compressionQuality: 0.9)
+                let randomNumber = Int.random(in: 0...20)
+                newWrite.image = UIImage(named: "trip\(randomNumber)")?.jpegData(compressionQuality: 0.9)
             } else {
                 newWrite.image = self.image?.jpegData(compressionQuality: 0.9)
             }

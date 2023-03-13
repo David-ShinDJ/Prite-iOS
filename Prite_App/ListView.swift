@@ -9,36 +9,18 @@ import Foundation
 import SwiftUI
 import CoreData
 
-// Core Data 연결후 ScrollView 수정하기
 struct ListView: View {
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
+    @Environment(\.isSearching) private var isSearching: Bool
+    @Environment(\.dismissSearch) private var dismissSearch
     
     @Environment(\.managedObjectContext) private var viewContext
-    
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Write.date, ascending: false)],
-                  animation: .default)
-    private var writes: FetchedResults<Write>
-    @StateObject var searchViewModel: SearchViewModel = SearchViewModel()
+                  animation: .default) private var writes: FetchedResults<Write>
+    @State private var query = ""
     
     let Rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
-    
-    private func serachWrite() {
-        lazy var explainPredicate: NSPredicate = {
-            return NSPredicate(format: "title CONTAINS %@", searchViewModel.searchText)
-        }()
-        
-        let fetchRequest = NSFetchRequest<Write>(entityName: "Write")
-        fetchRequest.predicate = explainPredicate
-        
-        do {
-            let result = try viewContext.fetch(fetchRequest)
-            print(writes)
-        } catch let error as NSError {
-            print("count not fetched \(error), \(error.userInfo)")
-        }
-        
-    }
     
     var body: some View {
         NavigationView {
@@ -49,10 +31,6 @@ struct ListView: View {
                         .font(.custom(font.titleFont, size: 24))
                     Spacer()
                 } else if writes.count <= 10 {
-                    SearchView(searchViewModel: searchViewModel)
-                        .onAdd {
-                            serachWrite()
-                        }
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: Rows,spacing:20) {
                             ForEach(0...writes.count - 1, id: \.self) { index in
@@ -74,10 +52,6 @@ struct ListView: View {
                         }
                     }
                 else if writes.count > 10 {
-                    SearchView(searchViewModel: searchViewModel)
-                        .onAdd {
-                            serachWrite()
-                        }
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: Rows,spacing:20) {
                             ForEach(0...writes.count / 2 - 1,id: \.self) { index in
@@ -122,11 +96,18 @@ struct ListView: View {
                     .font(.custom(font.plotFont, size: 24))
                 Spacer()
             }
-            .onAppear {
-                
+        }
+        .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "제목과 본문을 검색하세요...")
+        .onSubmit(of: .search) {
+            writes.nsPredicate = NSPredicate(format: "title CONTAINS %@ OR plot CONTAINS %@", query, query)
+        }
+        .onChange(of: query) { value in
+            if query.isEmpty && !isSearching {
+                writes.nsPredicate = nil
             }
-            .navigationBarHidden(true)
-            .navigationTitle("리스트")
         }
     }
 }
+
+
+

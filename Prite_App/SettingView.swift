@@ -25,8 +25,6 @@ struct SettingView:View {
     @Environment(\.environmentFont) var font: SettingFont
     @State private var fontValue: FontStyle = .basic
     @State private var themeValue: ThemeStyle = .basic
-    @State private var mapMagnitude: Double = 0.5
-    @StateObject var coreLocationManager: CoreLocationManager
     
     var body: some View {
         VStack (alignment: .center){
@@ -40,13 +38,10 @@ struct SettingView:View {
                 }.onChange(of: fontValue) { newValue in
                     if fontValue == .basic {
                         settingEnvironment.font = BasicFont()
-                        print("basic")
                     } else if fontValue == .elite {
                         settingEnvironment.font = EliteFont()
-                        print("elite")
                     } else {
                         settingEnvironment.font = CuteFont()
-                        print("cute")
                     }
                 }
                 Section (header:Text("테마변경")){
@@ -55,16 +50,13 @@ struct SettingView:View {
                         Text("고급").tag(ThemeStyle.elite)
                         Text("귀여운").tag(ThemeStyle.cute)
                     }.onChange(of: themeValue) { newValue in
-                        print("Change")
                         if themeValue == .basic {
                             settingEnvironment.theme = BasicTheme()
-                            print("basic")
                         } else if themeValue == .elite {
                             settingEnvironment.theme = EliteTheme()
-                            print("elite")
                         } else {
                             settingEnvironment.theme = CuteTheme()
-                            print("cute")
+                          
                         }
                     }
                 }

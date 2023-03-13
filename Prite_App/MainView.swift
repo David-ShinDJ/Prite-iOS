@@ -10,6 +10,9 @@ import SwiftUI
 // MARK @StateObject 공유하는경우 두개의뷰에서 서로다른 작업이 일어나면 Published 오류발생함
 // TODO: introduction 문구 수정하기
 struct MainView: View {
+    @AppStorage("theme") private var savedTheme: String = "basic"
+    @AppStorage("font") private var savedFont: String = "cute"
+    
     @ObservedObject var settingEnvironment: SettingEnvironment = SettingEnvironment()
     @StateObject var coreLocationManager: CoreLocationManager = CoreLocationManager()
     @Environment(\.environmentTheme) var theme: SettingTheme
@@ -39,17 +42,18 @@ struct MainView: View {
                         Label("Write", systemImage: "highlighter")
                 }
                 MapView(coreLocationManager: coreLocationManager)
-                    .tag("내가 작성한 글의 위치에 따라 지도에 표시됩니다")
+                    .tag("내가 작성한 글이 지도에 표시됩니다")
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem {
                         Label("Map", systemImage: "location.fill")
                 }
-                SettingView(settingEnvironment: settingEnvironment, coreLocationManager: coreLocationManager)
-                    .tag("폰트&테마를 변경할수있습니다")
+                SettingView(settingEnvironment: settingEnvironment)
+                    .tag("폰트와테마를 변경할수있습니다")
                     .environment(\.environmentTheme, settingEnvironment.theme)
                     .environment(\.environmentFont, settingEnvironment.font)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem {
                         Label("Setting", systemImage: "gearshape.fill")
                     }

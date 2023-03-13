@@ -3,7 +3,7 @@
     {
       "color" : {
         "platform" : "ios",
-        "reference" : "systemGray4Color"
+        "reference" : "systemGray2Color"
       },
       "idiom" : "universal"
     },
@@ -16,7 +16,7 @@
       ],
       "color" : {
         "platform" : "ios",
-        "reference" : "lightTextColor"
+        "reference" : "systemGray2Color"
       },
       "idiom" : "universal"
     }
