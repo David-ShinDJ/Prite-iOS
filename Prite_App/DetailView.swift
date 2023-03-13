@@ -51,6 +51,7 @@ struct DetailView: View {
             }
             alertTitle = "업데이트완료"
             alertMessage = "제목과 내용이 수정되었습니다..."
+            updating = false
         } else {
             print("Core Data Update 실패")
         }

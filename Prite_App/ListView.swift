@@ -7,22 +7,20 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
-// Core Data 연결후 ScrollView 수정하기
 struct ListView: View {
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
+    @Environment(\.isSearching) private var isSearching: Bool
+    @Environment(\.dismissSearch) private var dismissSearch
     
     @Environment(\.managedObjectContext) private var viewContext
-    
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Write.date, ascending: false)],
-                  animation: .default)
-    private var writes: FetchedResults<Write>
+                  animation: .default) private var writes: FetchedResults<Write>
+    @State private var query = ""
     
-    // MARK: SearchBar 구현
-
     let Rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
-    
     
     var body: some View {
         NavigationView {
@@ -98,18 +96,18 @@ struct ListView: View {
                     .font(.custom(font.plotFont, size: 24))
                 Spacer()
             }
-            .onAppear {
-                
+        }
+        .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "제목과 본문을 검색하세요...")
+        .onSubmit(of: .search) {
+            writes.nsPredicate = NSPredicate(format: "title CONTAINS %@ OR plot CONTAINS %@", query, query)
+        }
+        .onChange(of: query) { value in
+            if query.isEmpty && !isSearching {
+                writes.nsPredicate = nil
             }
-            .navigationBarHidden(true)
-            .navigationTitle("리스트")
         }
     }
 }
 
-struct ListView_Previews: PreviewProvider {
 
-    static var previews: some View {
-        ListView()
-    }
-}
+

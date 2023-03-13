@@ -11,18 +11,19 @@ let description: [String] = [
     "👋 안녕하세요 플라이트입니다 \n 살짝 갑작스럽지만 \n 이 앱을 만든 배경을 알려드리고싶습니다.",
     "📝 우리는 생각보다 \n 글쓰기라는 창작활동에 대해서 \n 많은 어려움을 느끼고있습니다",
     "📒 그래서 언제 어디서나 \n 글쓰기를 쉽게 시작할수있게 \n 글을 쓸수있는 앱이 있다면 좋다고 생각했습니다",
-    "🧭 플라이트를 통해 \n 글쓰기하여 리스트로 저장하고 지도에 표시된 심볼을 통해서도 \n 내 글을 확인해볼수있습니다"
+    "🧭 플라이트를 통해 \n 글을써서 목록을 저장하고 지도에 표시된 심볼을 통해서도 \n 내 글을 확인해볼수있습니다"
 ]
 
 struct OnboardingContent: View {
     @Binding var onboardingSheet:Bool
     @Binding var onboardingNumber:Int
     var body: some View {
-        VStack(alignment:.center, spacing: 40) {
+        VStack(alignment:.center) {
             Image("onboarding\(onboardingNumber)")
                 .resizable()
-                .frame(maxHeight:400)
+                .frame(maxHeight:300)
                 .ignoresSafeArea()
+            Spacer()
             Text(description[onboardingNumber])
                 .font(.title)
                 .multilineTextAlignment(.center)

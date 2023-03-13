@@ -10,7 +10,6 @@ import MapKit
 
 // TODO: View 구성 다시 짜기, 위치 재확인 버튼추가
 struct MapView: View {
-
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     @StateObject var coreLocationManager: CoreLocationManager
