@@ -12,10 +12,6 @@ struct ContentView: View {
     
     @State var onboardingSheet:Bool = false
     @AppStorage("Onboarding") private var onboarding:Bool = true
-    @AppStorage("font") private var savedFont: String = "basic"
-    @AppStorage("theme") private var savedTheme: String = "basic"
-    @State var fontValue = "basic"
-    @State var themeValue = "basic"
     var body: some View {
         MainView()
             .sheet(isPresented: $onboardingSheet) {
@@ -23,8 +19,6 @@ struct ContentView: View {
             }
             .onAppear {
                 onboardingSheet = onboarding
-                fontValue = savedFont
-                themeValue = savedTheme
             }
     }
 }

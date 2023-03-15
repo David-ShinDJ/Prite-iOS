@@ -29,20 +29,21 @@ struct MapView: View {
                             DetailView(write: write)
                         } label: {
                             Circle()
-                                .stroke(theme.iconColor, lineWidth: 3)
+                                .stroke(theme.accentColor, lineWidth: 3)
                                 .frame(width: 48, height: 48)
                         }
                     }
                 }
-                QuoteView(length: "short")
-                    .font(.custom(font.titleFont, size: 18))
                 Button {
                     self.region = self.coreLocationManager.region
                     print(writes)
                 } label: {
-                    Text("위치재확인")
-                        .font(.custom(font.titleFont, size: 18))
+                    Label("위치재확인", systemImage: "arrow.clockwise")
+                        .foregroundColor(theme.accentColor)
                 }
+                QuoteView(length: "short")
+                    .font(.custom(font.serif, size: 18))
+                    .padding()
                 
             }
             .onAppear {

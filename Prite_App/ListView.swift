@@ -14,7 +14,6 @@ struct ListView: View {
     @Environment(\.environmentFont) var font: SettingFont
     @Environment(\.isSearching) private var isSearching: Bool
     @Environment(\.dismissSearch) private var dismissSearch
-    
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Write.date, ascending: false)],
                   animation: .default) private var writes: FetchedResults<Write>
@@ -28,7 +27,7 @@ struct ListView: View {
                 if writes.count == 0 {
                     Spacer()
                     Text("글을써서 리스트를 추가해주세요")
-                        .font(.custom(font.titleFont, size: 24))
+                        .foregroundColor(theme.fontColor)
                     Spacer()
                 } else if writes.count <= 10 {
                     ScrollView(.horizontal) {
@@ -39,9 +38,8 @@ struct ListView: View {
                                     }
                                 label: {
                                     Text(writes[index].title!)
+                                        .foregroundColor(theme.accentColor)
                                         .lineLimit(2)
-                                        .font(.custom(font.plotFont, size: 24))
-                                        .foregroundColor(theme.iconColor)
                                 }
                                 Image(uiImage: UIImage(data: writes[index].image!)!)
                                         .resizable()
@@ -60,9 +58,8 @@ struct ListView: View {
                                     }
                                 label: {
                                     Text(writes[index].title!)
+                                        .foregroundColor(theme.accentColor)
                                         .lineLimit(2)
-                                        .font(.custom(font.plotFont, size: 24))
-                                        .foregroundColor(theme.iconColor)
                                 }
                                 Image(uiImage: UIImage(data: writes[index].image!)!)
                                         .resizable()
@@ -79,9 +76,8 @@ struct ListView: View {
                                     }
                             label: {
                                 Text(writes[index].title!)
+                                    .foregroundColor(theme.accentColor)
                                     .lineLimit(2)
-                                    .font(.custom(font.plotFont, size: 24))
-                                    .foregroundColor(theme.iconColor)
                             }
                             Image(uiImage: UIImage(data: writes[index].image!)!)
                                     .resizable()
@@ -93,7 +89,7 @@ struct ListView: View {
                 }
                 Spacer()
                 QuoteView(length: "long")
-                    .font(.custom(font.plotFont, size: 24))
+                    .font(.custom(font.serif, size: 18))
                 Spacer()
             }
         }

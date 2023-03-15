@@ -9,20 +9,37 @@ import Foundation
 import SwiftUI
 
 final class SettingEnvironment: ObservableObject {
-
+    
     @Published var theme:SettingTheme
     @Published var font:SettingFont
-
-    init() {
-        self.font = BasicFont()
-        self.theme = BasicTheme()
-    }
     
+    @AppStorage("Font") static private var savedFont:String = "basic"
+    @AppStorage("Theme") static private var savedTheme:String = "green"
+    
+    init() {
+        switch SettingEnvironment.savedFont {
+        case "cursive":
+            self.font = CursiveFont()
+        case "hand":
+            self.font = HandFont()
+        default:
+            self.font = BasicFont()
+        }
+        switch SettingEnvironment.savedTheme {
+        case "beige":
+            self.theme = BeigeTheme()
+        case "blue":
+            self.theme = BlueTheme()
+        default:
+            self.theme = GreenTheme()
+        }
+        print(SettingEnvironment.savedFont, SettingEnvironment.savedTheme)
+    }
 }
 
 
 private struct SettingThemeKey: EnvironmentKey {
-    static let defaultValue: SettingTheme = BasicTheme()
+    static let defaultValue: SettingTheme = GreenTheme()
 }
 private struct SettingFontKey: EnvironmentKey {
     static let defaultValue:SettingFont = BasicFont()
@@ -50,82 +67,82 @@ extension View {
 }
 
 protocol SettingTheme {
-    var buttonColor: Color { get }
+    var themeColor: Color { get }
     var fontColor: Color { get }
-    var iconColor: Color { get }
+    var accentColor: Color { get }
 }
 
 
 protocol SettingFont {
-    var titleFont: String { get }
-    var plotFont: String { get }
+    var sanserif: String { get }
+    var serif: String { get }
 }
 
-struct BasicTheme: SettingTheme {
-    var buttonColor: Color {
-        Color("buttonBasic")
+struct GreenTheme: SettingTheme {
+    var themeColor: Color {
+        Color("themeGreen")
     }
     
-    var iconColor: Color {
-        Color("iconBasic")
+    var accentColor: Color {
+        Color("accentGreen")
     }
     
     var fontColor: Color {
-        Color("fontBasic")
+        Color("fontGreen")
     }
 }
-struct EliteTheme: SettingTheme {
-    var buttonColor: Color {
-        Color("buttonElite")
+struct BeigeTheme: SettingTheme {
+    var themeColor: Color {
+        Color("themeBeige")
     }
     
-    var iconColor: Color {
-        Color("iconElite")
+    var accentColor: Color {
+        Color("accentBeige")
     }
     
     var fontColor: Color {
-        Color("fontElite")
+        Color("fontBeige")
     }
 }
 
-struct CuteTheme: SettingTheme {
-    var buttonColor: Color {
-        Color("buttonCute")
+struct BlueTheme: SettingTheme {
+    var themeColor: Color {
+        Color("themeBlue")
     }
     
-    var iconColor: Color {
-        Color("iconCute")
+    var accentColor: Color {
+        Color("accentBlue")
     }
     
     var fontColor: Color {
-        Color("fontCute")
+        Color("fontBlue")
     }
 }
 
 struct BasicFont: SettingFont {
-    var titleFont: String {
+    var sanserif: String {
         "BlackHanSans-Regular"
     }
-    var plotFont: String {
+    var serif: String {
         "SongMyung-Regular"
     }
     
 }
 
-struct EliteFont: SettingFont {
-    var titleFont: String {
-        "NanumPenScript-Regular"
+struct CursiveFont: SettingFont {
+    var sanserif: String {
+        "NanumBrushScript-Regular"
     }
-    var plotFont: String {
-        "Dongle-Regular"
+    var serif: String {
+        "NanumBrushScript-Regular"
     }
 
 }
-struct CuteFont: SettingFont {
-    var titleFont: String {
-        "Gaegu-Regular"
+struct HandFont: SettingFont {
+    var sanserif: String {
+        "NotoSansKR-Regular"
     }
-    var plotFont: String {
+    var serif: String {
         "CuteFont-Regular"
     }
     

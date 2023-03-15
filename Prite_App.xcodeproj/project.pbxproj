@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		634807E829C18D0F00B2D8D2 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 634807E729C18D0F00B2D8D2 /* NotoSansKR-Regular.otf */; };
 		635DE889299E0F640021FB63 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DE888299E0F640021FB63 /* DetailView.swift */; };
 		638FDBCA29AB7A71001F880C /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBC929AB7A71001F880C /* QuoteView.swift */; };
 		638FDBCD29AB7BA1001F880C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBCC29AB7BA1001F880C /* Constants.swift */; };
@@ -29,7 +30,6 @@
 		63F1E23829A7494000B2BB0E /* SongMyung-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7E29A5AC0F00AAFEF6 /* SongMyung-Regular.ttf */; };
 		63F1E23929A7494200B2BB0E /* NanumPenScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */; };
 		63F1E23A29A7494400B2BB0E /* NanumBrushScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */; };
-		63F1E23B29A7494600B2BB0E /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7C29A5ABFD00AAFEF6 /* Gaegu-Regular.ttf */; };
 		63F1E23C29A7494900B2BB0E /* Dongle-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */; };
 		63F1E23D29A7494B00B2BB0E /* CuteFont-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7829A5ABFD00AAFEF6 /* CuteFont-Regular.ttf */; };
 		63F1E24029A74A1800B2BB0E /* SettingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F1E23F29A74A1800B2BB0E /* SettingEnvironment.swift */; };
@@ -53,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		634807E729C18D0F00B2D8D2 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		635DE888299E0F640021FB63 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		637730D529B0D7E4009F3851 /* Prite_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		637730E229B0D7ED009F3851 /* Prite_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +79,6 @@
 		63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dongle-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumBrushScript-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumPenScript-Regular.ttf"; sourceTree = "<group>"; };
-		63F0EC7C29A5ABFD00AAFEF6 /* Gaegu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7D29A5AC0800AAFEF6 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7E29A5AC0F00AAFEF6 /* SongMyung-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SongMyung-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7F29A5AC2B00AAFEF6 /* Prite-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Prite-App-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -192,8 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				63F0EC7829A5ABFD00AAFEF6 /* CuteFont-Regular.ttf */,
+				634807E729C18D0F00B2D8D2 /* NotoSansKR-Regular.otf */,
 				63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */,
-				63F0EC7C29A5ABFD00AAFEF6 /* Gaegu-Regular.ttf */,
 				63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */,
 				63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */,
 				63F0EC7D29A5AC0800AAFEF6 /* BlackHanSans-Regular.ttf */,
@@ -331,7 +331,7 @@
 				63F1E23D29A7494B00B2BB0E /* CuteFont-Regular.ttf in Resources */,
 				63B96051299A81D8009F234A /* Preview Assets.xcassets in Resources */,
 				63B9604E299A81D8009F234A /* Assets.xcassets in Resources */,
-				63F1E23B29A7494600B2BB0E /* Gaegu-Regular.ttf in Resources */,
+				634807E829C18D0F00B2D8D2 /* NotoSansKR-Regular.otf in Resources */,
 				63F1E23929A7494200B2BB0E /* NanumPenScript-Regular.ttf in Resources */,
 				63F1E23A29A7494400B2BB0E /* NanumBrushScript-Regular.ttf in Resources */,
 				63F1E23729A7493D00B2BB0E /* BlackHanSans-Regular.ttf in Resources */,

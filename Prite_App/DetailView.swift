@@ -98,13 +98,11 @@ struct DetailView: View {
                     TextField("제목", text:$title)
                         .focused($focusedField, equals: .title)
                         .padding()
-                        .font(.custom(font.titleFont, size: 24))
                         .foregroundColor(theme.fontColor)
                         .disabled(!updating)
                     TextEditor(text:$plot)
                         .focused($focusedField, equals: .plot)
                         .padding()
-                        .font(.custom(font.plotFont, size: 18))
                         .foregroundColor(theme.fontColor)
                         .disabled(!updating)
                         .aspectRatio(2.0, contentMode: .fill)
@@ -128,7 +126,7 @@ struct DetailView: View {
                     }
                     Spacer()
                     QuoteView(length: "long")
-                        .font(.custom(font.titleFont, size: 18))
+                        .font(.custom(font.serif, size: 14))
                 }
                 .onAppear {
                     self.title = write.title ?? "제목없음"
@@ -160,7 +158,10 @@ struct DetailView: View {
                     }
                 } label: {
                     updating ? Text("수정완료") : Text("수정하기")
-                }.alert(isPresented: $showAlert) {
+                }
+                .font(.custom(font.sanserif, size: 18))
+                .foregroundColor(theme.accentColor)
+                .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text(alertTitle),
                         message: Text(alertMessage),

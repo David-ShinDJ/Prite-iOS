@@ -8,63 +8,89 @@
 import Foundation
 import SwiftUI
 
-enum FontStyle: String, CaseIterable, Identifiable {
-    case basic, elite, cute
-    var id: Self { self }
-}
-
-enum ThemeStyle: String, CaseIterable, Identifiable {
-    case basic, elite, cute
-    var id: Self { self }
-}
-
 struct SettingView:View {
+    enum FontStyle: String, CaseIterable, Identifiable {
+        case basic, cursive, hand
+        var id: Self { self }
+    }
+
+    enum ThemeStyle: String, CaseIterable, Identifiable {
+        case green, beige, blue
+        var id: Self { self }
+    }
     
     @ObservedObject var settingEnvironment: SettingEnvironment
     @Environment(\.environmentTheme) var theme: SettingTheme
     @Environment(\.environmentFont) var font: SettingFont
     @State private var fontValue: FontStyle = .basic
-    @State private var themeValue: ThemeStyle = .basic
+    @State private var themeValue: ThemeStyle = .green
+    
+    @AppStorage("Font") static private var savedFont:String = "basic"
+    @AppStorage("Theme") static private var savedTheme:String = "green"
     
     var body: some View {
         VStack (alignment: .center){
             Form {
-                Section (header:Text("폰트변경")){
+                Section (header:Text("폰트변경")) {
                     Picker("폰트", selection: $fontValue) {
                         Text("기본").tag(FontStyle.basic)
-                        Text("고급").tag(FontStyle.elite)
-                        Text("귀여운").tag(FontStyle.cute)
-                        }
+                        Text("흘림").tag(FontStyle.cursive)
+                        Text("손글씨").tag(FontStyle.hand)
+                    }
+                    .font(.custom(font.serif, size: 22))
                 }.onChange(of: fontValue) { newValue in
                     if fontValue == .basic {
                         settingEnvironment.font = BasicFont()
-                    } else if fontValue == .elite {
-                        settingEnvironment.font = EliteFont()
+                        SettingView.savedFont = "basic"
+                    } else if fontValue == .cursive {
+                        settingEnvironment.font = CursiveFont()
+                        SettingView.savedFont = "cursive"
                     } else {
-                        settingEnvironment.font = CuteFont()
+                        settingEnvironment.font = HandFont()
+                        SettingView.savedFont = "hand"
                     }
                 }
                 Section (header:Text("테마변경")){
                     Picker("테마", selection: $themeValue) {
-                        Text("기본").tag(ThemeStyle.basic)
-                        Text("고급").tag(ThemeStyle.elite)
-                        Text("귀여운").tag(ThemeStyle.cute)
-                    }.onChange(of: themeValue) { newValue in
-                        if themeValue == .basic {
-                            settingEnvironment.theme = BasicTheme()
-                        } else if themeValue == .elite {
-                            settingEnvironment.theme = EliteTheme()
+                        Text("올리브그린").tag(ThemeStyle.green)
+                        Text("베이지").tag(ThemeStyle.beige)
+                        Text("라이트블루").tag(ThemeStyle.blue)
+                    }
+                    .font(.custom(font.serif, size: 22))
+                    .onChange(of: themeValue) { newValue in
+                        if themeValue == .green {
+                            settingEnvironment.theme = GreenTheme()
+                            SettingView.savedTheme = "green"
+                        } else if themeValue == .beige {
+                            settingEnvironment.theme = BeigeTheme()
+                            SettingView.savedTheme = "beige"
                         } else {
-                            settingEnvironment.theme = CuteTheme()
-                          
+                            settingEnvironment.theme = BlueTheme()
+                            SettingView.savedTheme = "blue"
                         }
                     }
                 }
             }
-            Text("앱제작자 및 버전소개")
+            Text("앱제작 : DavidShin \n 앱버전 : 1.0.0 ")
+                .font(.custom(font.serif, size: 18))
                 .padding()
-                .foregroundColor(theme.fontColor)
-                .font(.custom(font.titleFont, size: 18))
+        }.onAppear {
+            switch SettingView.savedFont {
+            case "cursive":
+                fontValue = .cursive
+            case "hand":
+                fontValue = .hand
+            default:
+                fontValue = .basic
+            }
+            switch SettingView.savedTheme {
+            case "beige":
+                themeValue = .beige
+            case "blue":
+                themeValue = .blue
+            default:
+                themeValue = .green
+            }
         }
     }
 }
