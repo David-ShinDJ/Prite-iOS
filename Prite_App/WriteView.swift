@@ -123,6 +123,7 @@ struct WriteView: View {
                 TextEditor(text: $plot)
                     .foregroundColor(theme.fontColor)
                     .font(.custom(font.serif, size: 18))
+                    .multilineTextAlignment(.leading)
                 if (title != "" && plot != "본문을 입력해주세요" && self.plot != "") {
                     Spacer()
                     HStack {

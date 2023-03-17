@@ -13,27 +13,9 @@ final class SettingEnvironment: ObservableObject {
     @Published var theme:SettingTheme
     @Published var font:SettingFont
     
-    @AppStorage("Font") static private var savedFont:String = "basic"
-    @AppStorage("Theme") static private var savedTheme:String = "green"
-    
     init() {
-        switch SettingEnvironment.savedFont {
-        case "cursive":
-            self.font = CursiveFont()
-        case "hand":
-            self.font = HandFont()
-        default:
-            self.font = BasicFont()
-        }
-        switch SettingEnvironment.savedTheme {
-        case "beige":
-            self.theme = BeigeTheme()
-        case "blue":
-            self.theme = BlueTheme()
-        default:
-            self.theme = GreenTheme()
-        }
-        print(SettingEnvironment.savedFont, SettingEnvironment.savedTheme)
+        self.font = BasicFont()
+        self.theme = GreenTheme()
     }
 }
 
@@ -134,7 +116,7 @@ struct CursiveFont: SettingFont {
         "NanumBrushScript-Regular"
     }
     var serif: String {
-        "NanumBrushScript-Regular"
+        "NanumPenScript-Regular"
     }
 
 }

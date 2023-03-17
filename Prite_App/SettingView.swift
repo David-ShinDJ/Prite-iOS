@@ -25,9 +25,6 @@ struct SettingView:View {
     @State private var fontValue: FontStyle = .basic
     @State private var themeValue: ThemeStyle = .green
     
-    @AppStorage("Font") static private var savedFont:String = "basic"
-    @AppStorage("Theme") static private var savedTheme:String = "green"
-    
     var body: some View {
         VStack (alignment: .center){
             Form {
@@ -41,13 +38,13 @@ struct SettingView:View {
                 }.onChange(of: fontValue) { newValue in
                     if fontValue == .basic {
                         settingEnvironment.font = BasicFont()
-                        SettingView.savedFont = "basic"
+         
                     } else if fontValue == .cursive {
                         settingEnvironment.font = CursiveFont()
-                        SettingView.savedFont = "cursive"
+                     
                     } else {
                         settingEnvironment.font = HandFont()
-                        SettingView.savedFont = "hand"
+            
                     }
                 }
                 Section (header:Text("테마변경")){
@@ -60,13 +57,13 @@ struct SettingView:View {
                     .onChange(of: themeValue) { newValue in
                         if themeValue == .green {
                             settingEnvironment.theme = GreenTheme()
-                            SettingView.savedTheme = "green"
+                        
                         } else if themeValue == .beige {
                             settingEnvironment.theme = BeigeTheme()
-                            SettingView.savedTheme = "beige"
+                  
                         } else {
                             settingEnvironment.theme = BlueTheme()
-                            SettingView.savedTheme = "blue"
+        
                         }
                     }
                 }
@@ -75,22 +72,6 @@ struct SettingView:View {
                 .font(.custom(font.serif, size: 18))
                 .padding()
         }.onAppear {
-            switch SettingView.savedFont {
-            case "cursive":
-                fontValue = .cursive
-            case "hand":
-                fontValue = .hand
-            default:
-                fontValue = .basic
-            }
-            switch SettingView.savedTheme {
-            case "beige":
-                themeValue = .beige
-            case "blue":
-                themeValue = .blue
-            default:
-                themeValue = .green
-            }
         }
     }
 }
