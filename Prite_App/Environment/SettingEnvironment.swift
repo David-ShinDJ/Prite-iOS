@@ -13,9 +13,24 @@ final class SettingEnvironment: ObservableObject {
     @Published var theme:SettingTheme
     @Published var font:SettingFont
     
+    @AppStorage("Font") static private var savedFont:String = "basic"
+    @AppStorage("Theme") static private var savedTheme:String = "green"
+    
     init() {
-        self.font = BasicFont()
-        self.theme = GreenTheme()
+        if SettingEnvironment.savedFont == "cursive" {
+            self.font = CursiveFont()
+        } else if SettingEnvironment.savedFont == "hand" {
+            self.font = HandFont()
+        } else {
+            self.font = BasicFont()
+        }
+        if SettingEnvironment.savedTheme == "blue" {
+            self.theme = BlueTheme()
+        } else if SettingEnvironment.savedFont == "beige" {
+            self.theme = BeigeTheme()
+        } else {
+            self.theme = GreenTheme()
+        }
     }
 }
 

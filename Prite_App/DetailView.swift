@@ -100,12 +100,14 @@ struct DetailView: View {
                         .padding()
                         .foregroundColor(theme.fontColor)
                         .disabled(!updating)
+                        .font(.custom(font.sanserif, size: 24))
                     TextEditor(text:$plot)
                         .focused($focusedField, equals: .plot)
                         .padding()
                         .foregroundColor(theme.fontColor)
                         .disabled(!updating)
                         .aspectRatio(2.0, contentMode: .fill)
+                        .font(.custom(font.sanserif, size: 18))
                     if updating {
                         Button {
                             deleteAlert = true
@@ -126,7 +128,7 @@ struct DetailView: View {
                     }
                     Spacer()
                     QuoteView(length: "long")
-                        .font(.custom(font.serif, size: 14))
+                        .font(.custom(font.serif, size: 18))
                 }
                 .onAppear {
                     self.title = write.title ?? "제목없음"

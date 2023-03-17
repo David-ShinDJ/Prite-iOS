@@ -24,6 +24,8 @@ struct SettingView:View {
     @Environment(\.environmentFont) var font: SettingFont
     @State private var fontValue: FontStyle = .basic
     @State private var themeValue: ThemeStyle = .green
+    @AppStorage("Font") static private var savedFont:String = "basic"
+    @AppStorage("Theme") static private var savedTheme:String = "green"
     
     var body: some View {
         VStack (alignment: .center){
@@ -38,12 +40,15 @@ struct SettingView:View {
                 }.onChange(of: fontValue) { newValue in
                     if fontValue == .basic {
                         settingEnvironment.font = BasicFont()
+                        SettingView.savedFont = "basic"
          
                     } else if fontValue == .cursive {
                         settingEnvironment.font = CursiveFont()
+                        SettingView.savedFont = "cursive"
                      
                     } else {
                         settingEnvironment.font = HandFont()
+                        SettingView.savedFont = "hand"
             
                     }
                 }
@@ -72,6 +77,12 @@ struct SettingView:View {
                 .font(.custom(font.serif, size: 18))
                 .padding()
         }.onAppear {
+            if SettingView.savedFont == "cursive" {
+                self.fontValue = .cursive
+            } else if SettingView.savedFont == "hand" {
+                self.fontValue = .hand
+            }
+            
         }
     }
 }
