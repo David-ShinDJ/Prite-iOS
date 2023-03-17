@@ -19,7 +19,7 @@ struct ListView: View {
                   animation: .default) private var writes: FetchedResults<Write>
     @State private var query = ""
     
-    let Rows = [GridItem(.flexible(maximum:400),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
+    let Rows = [GridItem(.flexible(maximum:100),spacing:0), GridItem(.flexible(maximum:400),spacing:0)]
     
     var body: some View {
         NavigationView {
@@ -43,8 +43,8 @@ struct ListView: View {
                                 }
                                 Image(uiImage: UIImage(data: writes[index].image!)!)
                                     .resizable()
+                                    .frame(maxWidth: 400, maxHeight: 400)
                                     .aspectRatio( contentMode: .fit)
-                                    .frame(maxWidth: .infinity, maxHeight: 300)
                                     .cornerRadius(30)
                                 }
                             }
@@ -63,14 +63,16 @@ struct ListView: View {
                                         .lineLimit(2)
                                 }
                                 Image(uiImage: UIImage(data: writes[index].image!)!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .cornerRadius(30)
+                                    .resizable()
+                                    .frame(maxWidth: 300, maxHeight: 300)
+                                    .aspectRatio( contentMode: .fit)
+                                    .cornerRadius(30)
                                 }
                             }
                         }
+                    Spacer()
                     ScrollView(.horizontal) {
-                        LazyHGrid(rows: Rows,spacing:10) {
+                        LazyHGrid(rows: Rows,spacing:20) {
                             ForEach(writes.count / 2...writes.count - 1, id: \.self) { index in
                                 NavigationLink {
                                     DetailView(write: writes[index])
@@ -82,7 +84,8 @@ struct ListView: View {
                             }
                             Image(uiImage: UIImage(data: writes[index].image!)!)
                                     .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 300, maxHeight: 300)
+                                    .aspectRatio( contentMode: .fit)
                                     .cornerRadius(30)
                             }
                         }

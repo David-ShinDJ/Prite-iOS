@@ -89,9 +89,13 @@ struct DetailView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 10) {
-                    Image(uiImage: (UIImage(data: write.image ?? Data()) ?? UIImage(named: "trip0"))!)
-                        .resizable()
-                        .frame(maxWidth: .infinity, maxHeight: 400)
+                    if ((write.image?.hashValue) != nil) {
+                        Image(uiImage: UIImage(data: write.image!)!)
+                            .resizable()
+                            .frame(maxWidth: .infinity, maxHeight: 400)
+                    } else {
+                        Image("trip0")
+                    }
                     if isEditing {
                         TextField("제목", text:$title)
                             .focused($titleIsFocused)
@@ -125,8 +129,8 @@ struct DetailView: View {
                                 .foregroundColor(.red)
                         }                    .alert(isPresented:$deleteAlert) {
                             Alert(
-                                title: Text("정말로 삭제 하시겠습니까??"),
-                                message: Text("계정삭제시 복구불가"),
+                                title: Text("삭제 하시겠습니까??"),
+                                message: Text("삭제시 복구불가능합니다.."),
                                 primaryButton: .destructive(Text("삭제")) {
                                     dismiss()
                                     deleteWrite()
