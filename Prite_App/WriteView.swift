@@ -26,6 +26,8 @@ struct WriteView: View {
     @State private var isPresented = false
     @State private var sourceType = UIImagePickerController.SourceType.photoLibrary
     @State private var image:UIImage?
+    @FocusState private var titleIsFocused: Bool
+    @FocusState private var plotIsFocused: Bool
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -80,8 +82,8 @@ struct WriteView: View {
                 if let image = self.image {
                     Image(uiImage: image)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, maxHeight: 250)
+                        .aspectRatio( contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: 300)
                         .onTapGesture {
                             self.isPresented.toggle()
                         }
@@ -117,10 +119,19 @@ struct WriteView: View {
                     .foregroundColor(theme.fontColor)
                     .padding()
                     .multilineTextAlignment(.leading)
+                    .focused($titleIsFocused)
+                    .onTapGesture {
+                        titleIsFocused = true
+                    }
+                    .onSubmit {
+                        titleIsFocused = false
+                        plotIsFocused = true
+                    }
                 Divider()
                     .frame(height:2)
                     .overlay(theme.accentColor)
                 TextEditor(text: $plot)
+                    .focused($plotIsFocused)
                     .foregroundColor(theme.fontColor)
                     .font(.custom(font.serif, size: 18))
                     .multilineTextAlignment(.leading)
@@ -130,6 +141,7 @@ struct WriteView: View {
                         Spacer()
                         Button {
                             showAlert = true
+                            plotIsFocused = false
                             do {
                                 try errorHandleWrite { success in
                                     createWrite(success: success)
@@ -156,9 +168,11 @@ struct WriteView: View {
                                 title: Text(alertTitle),
                                 message: Text(alertMessage),
                                 dismissButton: .default(Text("확인")) {
-                                    self.title = ""
-                                    self.plot = ""
-                                    self.image = nil
+                                    if alertTitle == "생성완료" {
+                                        self.title = ""
+                                        self.plot = ""
+                                        self.image = nil
+                                    }
                                 }
                             )
                         }
