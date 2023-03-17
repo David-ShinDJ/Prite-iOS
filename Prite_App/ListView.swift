@@ -42,9 +42,10 @@ struct ListView: View {
                                         .lineLimit(2)
                                 }
                                 Image(uiImage: UIImage(data: writes[index].image!)!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .cornerRadius(30)
+                                    .resizable()
+                                    .aspectRatio( contentMode: .fit)
+                                    .frame(maxWidth: .infinity, maxHeight: 300)
+                                    .cornerRadius(30)
                                 }
                             }
                         }
