@@ -113,10 +113,10 @@ struct BasicFont: SettingFont {
 
 struct CursiveFont: SettingFont {
     var sanserif: String {
-        "NanumBrushScript-Regular"
+        "Stylish-Regular"
     }
     var serif: String {
-        "NanumPenScript-Regular"
+        "Dongle-Regular"
     }
 
 }

@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		634807E829C18D0F00B2D8D2 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 634807E729C18D0F00B2D8D2 /* NotoSansKR-Regular.otf */; };
 		635DE889299E0F640021FB63 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DE888299E0F640021FB63 /* DetailView.swift */; };
 		638FDBCA29AB7A71001F880C /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBC929AB7A71001F880C /* QuoteView.swift */; };
 		638FDBCD29AB7BA1001F880C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FDBCC29AB7BA1001F880C /* Constants.swift */; };
 		639F944A29C4B5A4007CE73D /* Prite-App-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7F29A5AC2B00AAFEF6 /* Prite-App-Info.plist */; };
+		639F949C29C4BFAD007CE73D /* Dokdo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639F949A29C4BFAD007CE73D /* Dokdo-Regular.ttf */; };
+		639F949D29C4BFAD007CE73D /* Stylish-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 639F949B29C4BFAD007CE73D /* Stylish-Regular.ttf */; };
 		63B9604A299A81D7009F234A /* Prite_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B96049299A81D7009F234A /* Prite_AppApp.swift */; };
 		63B9604C299A81D7009F234A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9604B299A81D7009F234A /* ContentView.swift */; };
 		63B9604E299A81D8009F234A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B9604D299A81D8009F234A /* Assets.xcassets */; };
@@ -29,8 +30,6 @@
 		63BC5CD9299D11660002BC1D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BC5CD8299D11660002BC1D /* OnboardingView.swift */; };
 		63F1E23729A7493D00B2BB0E /* BlackHanSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7D29A5AC0800AAFEF6 /* BlackHanSans-Regular.ttf */; };
 		63F1E23829A7494000B2BB0E /* SongMyung-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7E29A5AC0F00AAFEF6 /* SongMyung-Regular.ttf */; };
-		63F1E23929A7494200B2BB0E /* NanumPenScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */; };
-		63F1E23A29A7494400B2BB0E /* NanumBrushScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */; };
 		63F1E23C29A7494900B2BB0E /* Dongle-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */; };
 		63F1E23D29A7494B00B2BB0E /* CuteFont-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63F0EC7829A5ABFD00AAFEF6 /* CuteFont-Regular.ttf */; };
 		63F1E24029A74A1800B2BB0E /* SettingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F1E23F29A74A1800B2BB0E /* SettingEnvironment.swift */; };
@@ -54,12 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		634807E729C18D0F00B2D8D2 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		635DE888299E0F640021FB63 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		637730D529B0D7E4009F3851 /* Prite_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		637730E229B0D7ED009F3851 /* Prite_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Prite_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		638FDBC929AB7A71001F880C /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		638FDBCC29AB7BA1001F880C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		639F949A29C4BFAD007CE73D /* Dokdo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dokdo-Regular.ttf"; sourceTree = "<group>"; };
+		639F949B29C4BFAD007CE73D /* Stylish-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Stylish-Regular.ttf"; sourceTree = "<group>"; };
 		63B96046299A81D7009F234A /* Prite_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prite_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B96049299A81D7009F234A /* Prite_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prite_AppApp.swift; sourceTree = "<group>"; };
 		63B9604B299A81D7009F234A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,8 +78,6 @@
 		63BC5CD8299D11660002BC1D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		63F0EC7829A5ABFD00AAFEF6 /* CuteFont-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CuteFont-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dongle-Regular.ttf"; sourceTree = "<group>"; };
-		63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumBrushScript-Regular.ttf"; sourceTree = "<group>"; };
-		63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumPenScript-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7D29A5AC0800AAFEF6 /* BlackHanSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BlackHanSans-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7E29A5AC0F00AAFEF6 /* SongMyung-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SongMyung-Regular.ttf"; sourceTree = "<group>"; };
 		63F0EC7F29A5AC2B00AAFEF6 /* Prite-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Prite-App-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -119,17 +117,9 @@
 			path = Static;
 			sourceTree = "<group>";
 		};
-		639F947129C4BC47007CE73D /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		63B9603D299A81D7009F234A = {
 			isa = PBXGroup;
 			children = (
-				639F947129C4BC47007CE73D /* New Group */,
 				63B96048299A81D7009F234A /* Prite_App */,
 				63B96047299A81D7009F234A /* Products */,
 			);
@@ -201,10 +191,9 @@
 			isa = PBXGroup;
 			children = (
 				63F0EC7829A5ABFD00AAFEF6 /* CuteFont-Regular.ttf */,
-				634807E729C18D0F00B2D8D2 /* NotoSansKR-Regular.otf */,
+				639F949A29C4BFAD007CE73D /* Dokdo-Regular.ttf */,
+				639F949B29C4BFAD007CE73D /* Stylish-Regular.ttf */,
 				63F0EC7929A5ABFD00AAFEF6 /* Dongle-Regular.ttf */,
-				63F0EC7A29A5ABFD00AAFEF6 /* NanumBrushScript-Regular.ttf */,
-				63F0EC7B29A5ABFD00AAFEF6 /* NanumPenScript-Regular.ttf */,
 				63F0EC7D29A5AC0800AAFEF6 /* BlackHanSans-Regular.ttf */,
 				63F0EC7E29A5AC0F00AAFEF6 /* SongMyung-Regular.ttf */,
 			);
@@ -340,13 +329,12 @@
 				63F1E23D29A7494B00B2BB0E /* CuteFont-Regular.ttf in Resources */,
 				63B96051299A81D8009F234A /* Preview Assets.xcassets in Resources */,
 				63B9604E299A81D8009F234A /* Assets.xcassets in Resources */,
-				634807E829C18D0F00B2D8D2 /* NotoSansKR-Regular.otf in Resources */,
-				63F1E23929A7494200B2BB0E /* NanumPenScript-Regular.ttf in Resources */,
 				639F944A29C4B5A4007CE73D /* Prite-App-Info.plist in Resources */,
-				63F1E23A29A7494400B2BB0E /* NanumBrushScript-Regular.ttf in Resources */,
 				63F1E23729A7493D00B2BB0E /* BlackHanSans-Regular.ttf in Resources */,
+				639F949C29C4BFAD007CE73D /* Dokdo-Regular.ttf in Resources */,
 				63F1E23C29A7494900B2BB0E /* Dongle-Regular.ttf in Resources */,
 				63F1E23829A7494000B2BB0E /* SongMyung-Regular.ttf in Resources */,
+				639F949D29C4BFAD007CE73D /* Stylish-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
