@@ -39,7 +39,7 @@ struct WriteView: View {
             newWrite.uuid = UUID()
             if image == nil {
                 let randomNumber = Int.random(in: 0...20)
-                newWrite.image = UIImage(named: "trip\(randomNumber)")?.jpegData(compressionQuality: 0.9)
+                newWrite.image = UIImage(named: "random\(randomNumber)")?.jpegData(compressionQuality: 0.9)
             } else {
                 newWrite.image = self.image?.jpegData(compressionQuality: 0.9)
             }
@@ -95,39 +95,35 @@ struct WriteView: View {
                         Image(systemName: "photo")
                             .resizable()
                             .frame(maxWidth: 48, maxHeight: 48)
-                            .foregroundColor(theme.iconColor)
+                            .foregroundColor(theme.accentColor)
                         Button {
                             self.isPresented.toggle()
                         } label: {
                             Image(systemName: "plus")
                                 .resizable()
                                 .frame(maxWidth: 48, maxHeight: 48)
-                                .foregroundColor(theme.iconColor)
+                                .foregroundColor(theme.accentColor)
+                         
                         }.sheet(isPresented: $isPresented,onDismiss: {
                         },content: {
                             ImagePicker(sourceType: self.sourceType, image: $image)
                         })
-                        Text("사진을 추가해주세요")
-                            .font(.custom(font.titleFont, size:24))
+                        Text("사진을 넣어주세요")
+                            .foregroundColor(theme.accentColor)
+                            .font(.custom(font.sanserif, size: 18))
                     }
                 }
-                HStack(spacing:10){
-                    Text("제목")
-                        .padding()
-                        .font(.custom(font.titleFont, size:24))
-                    Spacer()
-                    TextField("제목을 입력해주세요", text: $title)
-                        .font(.custom(font.titleFont, size:24))
-                        .foregroundColor(theme.fontColor)
-                        .onSubmit {
-                        }
-                }
+                TextField("제목을 입력해주세요", text: $title)
+                    .foregroundColor(theme.fontColor)
+                    .padding()
+                    .multilineTextAlignment(.leading)
                 Divider()
                     .frame(height:2)
-                    .overlay(theme.fontColor)
+                    .overlay(theme.accentColor)
                 TextEditor(text: $plot)
-                    .font(.custom(font.plotFont, size:18))
                     .foregroundColor(theme.fontColor)
+                    .font(.custom(font.serif, size: 18))
+                    .multilineTextAlignment(.leading)
                 if (title != "" && plot != "본문을 입력해주세요" && self.plot != "") {
                     Spacer()
                     HStack {
