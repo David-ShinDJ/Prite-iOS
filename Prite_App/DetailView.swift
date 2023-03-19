@@ -159,6 +159,7 @@ struct DetailView: View {
                                 updateWrite(success: success)
                             }
                         } catch {
+                            
                             if error as! UpdateError == UpdateError.titleError {
                                 alertTitle = "업데이트실패"
                                 alertMessage = "제목의 수정에 실패했습니다..."
