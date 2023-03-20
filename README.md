@@ -2,10 +2,21 @@
 ## 앱소개
 #### Prite = Place + Write 뜻하며 위치장소를 사용하여 글쓰기를 도와주는앱입니다
 #### 앱은 총 4개의 페이지로 구성되있습니다.
-- ![page1](./img/page1.png=250x)페이지1 글쓰기목록을 확인할수있습니다 글쓰기의 제목을 눌러서 삭제및 업데이트를 진행하세요
-- ![page2](./img/page2.png=250x)페이지2 글을 작성하는 페이지입니다 사진과 제목그리고 본문을 입력해서 글쓰기를 해보세요
-- ![page3](./img/page3.png=250x)페이지3 현재 내위치를 통해서 작성한 글쓰기들이 동그라미로 나타납니다
-- ![page4](./img/page4.png=250x)페이지4 폰트와테마를 변경할수있습니다
+##
+- 페이지1 글쓰기목록을 확인할수있습니다 글쓰기의 제목을 눌러서 삭제및 업데이트를 진행하세요
+- 페이지2 글을 작성하는 페이지입니다 사진과 제목그리고 본문을 입력해서 글쓰기를 해보세요
+- 페이지3 현재 내위치를 통해서 작성한 글쓰기들이 동그라미로 나타납니다
+- 페이지4 폰트와테마를 변경할수있습니다
+<div>
+    <img src="./img/page1.png" alt="page 1" width="320" height="600"> 
+    <img src="./img/page2.png" alt="page 2" width="320" height="600"> 
+</div>
+<div>
+    <img src="./img/page3.png" alt="page 3" width="320" height="600"> 
+    <img src="./img/page4.png" alt="page 4" width="320" height="600">
+</div>
+
+
 
 
 
@@ -48,6 +59,5 @@ commit 내용에 대한 세부 설명
     - `feature/[기능]` : 각 기능별 개발을 진행하는 브랜치
     - `testing` : 테스트코드작성 기능 (Unit & UI) Test
     - `build` : Xcode Cloud 및 BuildFile 설정 
-
 
 
