@@ -21,6 +21,7 @@
 
 
 #### iOS플랫폼을 통해 Appstore에서 다운로드가능합니다 
+#### 다운로드링크 <a>https://apps.apple.com/kr/app/prite/id1660450422</a>
 
 
 ## 개발환경
